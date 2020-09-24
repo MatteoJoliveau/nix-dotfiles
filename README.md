@@ -41,6 +41,44 @@ Running `home-manager switch` will update the system with the defined configurat
 
 ## Structure
 
+```bash
+.
+├── nix                                 # Niv directory
+├── nixos                               # NixOS system configurations
+│  ├── common.nix                         # Shared config
+│  └── frenchpenguin                      # Frenchpenguin (work laptop) specific configs
+│     ├── configuration.nix
+│     └── hardware-configuration.nix
+├── nixpkgs                             # Home-Manager configuration
+│  ├── common.nix                         # Shared config
+│  ├── config.nix                         # Nixpkgs config
+│  ├── configs                            # Miscellaneous config files
+│  ├── home.nix                           # Main HM config (only imports common.nix and ${hostname}.nix)
+│  ├── hosts                              # System-specific configurations
+│  │  └── frenchpenguin.nix                 # Frenchpenguin (work laptop) specific configs
+│  ├── images                             # Various images
+│  ├── install.sh                         # Install script
+│  ├── modules                            # Reusable components that install and configure various aspects of the system
+│  │  ├── alacritty.nix                     # Alacritty (terminal emulator)
+│  │  ├── coreutils.nix                     # System core components (vim, exa, environment variables, etc)
+│  │  ├── desktop.nix                       # GUI-related software (chats, email, Steam, file explorer, GTK theme, etc) [1]
+│  │  ├── development.nix                   # Sofware development tools (editors, compilers, language runtimes, etc)
+│  │  ├── fish.nix                          # Fish shell
+│  │  ├── git.nix                           # Git
+│  │  ├── gpg.nix                           # GPG and Keybase
+│  │  ├── greenclip.nix                     # Greenclip config (clipboard manager [2])
+│  │  └── xmonad.nix                        # XMonad configuration (includes DE-less tools like Rofi, Picom, Dunst, etc)
+│  ├── pkgs                               # Custom packages not available on nixpkgs
+│  └── xmonad                             # XMonad configuration
+│     ├── xmobar.hs                         # XMobar config
+│     ├── xmonad-session-rc                 # Symlinked to `.xprofile` for starting up services and preparing the graphical environment
+│     └── xmonad.hs                         # XMonad main config
+└── shell.nix                             # Nix Shell config
+```
+
+1: DEs and window managers are installed system-wide and configured locally
+2: *For various reasons Greenclip is actually installed and started in `/etc/nixos/configuration.nix` but starts as a user service.*
+
 ## Contributing
 
 This repo is (unsurprisingly) managed with [Nix Shells].

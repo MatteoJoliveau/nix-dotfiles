@@ -32,6 +32,7 @@
       "code." = "code .";
       # sudo = "doas";
       hm = "home-manager";
+      tree = "ls -T";
     };
 
     promptInit = "eval (starship init fish)";
