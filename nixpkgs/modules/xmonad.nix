@@ -28,6 +28,7 @@
     ".xmonad/xmobar.hs".source = ../xmonad/xmobar.hs;
     ".xmonad/bin/screenshot".source = ../xmonad/bin/screenshot;
     ".xmonad/bin/select-screenshot".source = ../xmonad/bin/select-screenshot;
+    ".xmonad/bin/connect-known-bt".source = ../xmonad/bin/connect-known-bt;
     "Pictures/wallpaper.png".source = ../images/wallpaper.png;
   };
 

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    autorandr
+  imports = [
+     ../modules/bluetooth.nix
   ];
 }

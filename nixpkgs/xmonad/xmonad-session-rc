@@ -1,8 +1,4 @@
 #!/bin/sh
-# Script to configure X, start common apps, and start xmonad.
-# Author: Vic Fryzel
-# https://github.com/vicfryzel/xmonad-config
-
 
 # Configure PATH so that we can access our scripts below
 PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
@@ -34,8 +30,8 @@ Discord &
 # Start Mailspring
 mailspring &
 
-# Start sound server
-# pulseaudio --start --log-target=syslog &
+# Start bluetooth connections
+connect-known-bt & > /dev/null
 
 # Configure displays
 autorandr --change

@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+if ! command -v bluetoothctl >/dev/null 2>&1;
+then 
+    # bluetoothctl not available
+    exit 0
+fi
+
+for device in $(bluetoothctl paired-devices | cut -d' ' -f2)
+do
+    bluetoothctl connect "$device" &
+done

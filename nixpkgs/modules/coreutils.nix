@@ -5,9 +5,8 @@
     htop
     gotop
     ffmpeg
-    bluez
-    blueman
     pulseaudio
+    pavucontrol
     exa
     bat
     ripgrep
