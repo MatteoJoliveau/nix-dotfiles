@@ -1,4 +1,4 @@
-# Workstations Setup
+# Nix Dotfiles
 
 Nix recipes for my personal workstations.
 
