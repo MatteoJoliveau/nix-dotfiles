@@ -13,9 +13,12 @@
     ripgrep
     fd
     jetbrains-mono
+    vim
   ];
 
-  programs = {
-    direnv.enable = true;
+  programs.direnv.enable = true;
+
+  home.sessionVariables = {
+    EDITOR = "${pkgs.vim}/bin/vim";
   };
 }
