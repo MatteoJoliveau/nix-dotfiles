@@ -21,7 +21,7 @@ nix-channel --update
 nix-shell '<home-manager>' -A install
 ```
 
-Clone the repository somewhere handy. The clone directory will be symlinked with the files' final destination so that any change
+Clone the repository somewhere handy. The cloned directory will be symlinked with the files' final destination so that any change
 made to this repo will instantly reflect on the target system.
 
 ```bash
