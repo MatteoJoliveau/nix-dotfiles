@@ -1,0 +1,54 @@
+#!/bin/sh
+# Script to configure X, start common apps, and start xmonad.
+# Author: Vic Fryzel
+# https://github.com/vicfryzel/xmonad-config
+
+
+# Configure PATH so that we can access our scripts below
+PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
+
+# Configure X
+xsetroot -cursor_name left_ptr &
+xrdb -merge ~/.Xdefaults &
+xmodmap ~/.xmodmap
+setxkbmap -variant altgr-intl -option ctrl:nocaps
+
+# Configure NTP
+timedatectl set-ntp true
+
+# Start a window compositor
+picom -b -d :0
+
+# Start a browser
+firefox &
+
+# Start Telegram
+telegram-desktop &
+
+# Start Slack
+slack &
+
+# Start Discord
+Discord &
+
+# Start Mailspring
+mailspring &
+
+# Start sound server
+# pulseaudio --start --log-target=syslog &
+
+# Configure displays
+autorandr --change
+
+# Set wallpaper
+eval $(~/.fehbg)
+
+# Update lockscreen images
+multilockscreen -u ~/Pictures/wallpaper.png &
+
+# Launch Notification Server
+dunst &
+
+# Launch lockscreen manager
+xss-lock -l -- multilockscreen -l blur --off 600 &
+

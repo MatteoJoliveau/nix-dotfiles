@@ -1,0 +1,56 @@
+{ pkgs, ... }:
+
+{
+  home.packages = with pkgs; [
+    libsecret
+    unstable.mailspring
+    slack
+    discord
+    gvfs
+    tdesktop
+    bitwarden
+    spotify
+    unstable.yubioath-desktop
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    gnome3.gnome-keyring
+    gnome3.seahorse
+    steam
+    steam-run-native
+  ];
+
+  home.file.".face".source = ../images/propic.jpeg;
+
+  home.sessionVariables = {
+    GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    theme = {
+      name = "Adwaita";
+      package = pkgs.gnome3.gnome_themes_standard;
+    };
+    font =
+      {
+        package = pkgs.roboto;
+        name = "Roboto 11";
+      };
+    gtk3.extraConfig.gtk-cursor-theme-name = "breeze";
+  };
+
+  qt = {
+    platformTheme = "gtk";
+  };
+
+  xresources = {
+    properties = {
+      "Xft.dpi" = "110";
+    };
+  };
+}

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+SCREENSHOT_DIR=$HOME/Pictures/Screenshots
+mkdir -p $SCREENSHOT_DIR
+flameshot screen --path $SCREENSHOT_DIR -c

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+SCREENSHOT_DIR=/tmp/screenshots
+mkdir -p $SCREENSHOT_DIR
+flameshot gui --path $SCREENSHOT_DIR
