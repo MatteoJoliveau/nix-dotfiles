@@ -8,6 +8,6 @@
       };
     };
 
-    multilockscreen = callPackage pkgs/multilockscreen.nix {};
+    multilockscreen = callPackage pkgs/multilockscreen.nix { };
   };
 }

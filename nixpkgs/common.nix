@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 let
   username = builtins.getEnv "USER";
   homedir = builtins.getEnv "HOME";
@@ -19,10 +18,12 @@ in
 
   home.username = username;
   home.homeDirectory = homedir;
-  home.stateVersion = "20.03";
+  home.stateVersion = "20.09";
 
   programs.home-manager = {
     enable = true;
-    path = "https://github.com/nix-community/home-manager/archive/release-20.03.tar.gz";
+    path = "https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz";
   };
+
+  manual.manpages.enable = false;
 }

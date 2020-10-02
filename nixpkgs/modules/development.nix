@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 let
   nodejs = pkgs.unstable.nodejs-14_x;
   yarn = pkgs.yarn;

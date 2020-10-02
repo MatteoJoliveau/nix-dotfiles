@@ -18,6 +18,7 @@
     gnome3.seahorse
     steam
     steam-run-native
+    libreoffice-fresh
   ];
 
   home.file.".face".source = ../images/propic.jpeg;

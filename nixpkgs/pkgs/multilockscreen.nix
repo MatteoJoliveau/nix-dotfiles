@@ -1,10 +1,8 @@
 { stdenv, fetchFromGitHub, makeWrapper, pkgs }:
-
 let
   name = "multilockscreen";
   version = "v1.0.0";
 in
-
 stdenv.mkDerivation {
   name = "${name}";
   src = fetchFromGitHub {

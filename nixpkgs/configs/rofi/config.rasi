@@ -1,5 +1,5 @@
 configuration {
-/*	modi: "window,run,ssh";*/
+    modi: "combi,drun,window,run,ssh";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/

@@ -49,13 +49,7 @@ myEmoji = "splatmoji type"
 
 -- The command to use as a launcher, to launch applications that don't have
 -- preset keybindings.
-myAppLauncher = "$(rofi -show drun -theme onedark -modi 'drun')"
-
--- Generic command launcher
-myLauncher = "$(rofi -show run -theme onedark -modi 'run')"
-
--- Shell script launcher
-myCmdLauncher = "rofi -show drun -theme onedark -run-shell-command '{terminal} -e \" {cmd}; read -n 1 -s\"'"
+myAppLauncher = "rofi -show combi -modi combi -combi-modi ssh,drun -theme onedark"
 
 -- Password manager command
 myPasswordManager = "bwmenu -- -theme onedark"

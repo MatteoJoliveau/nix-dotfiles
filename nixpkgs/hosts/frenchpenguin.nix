@@ -2,6 +2,6 @@
 
 {
   imports = [
-     ../modules/bluetooth.nix
+    ../modules/bluetooth.nix
   ];
 }

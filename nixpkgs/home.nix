@@ -1,7 +1,6 @@
 { pkgs, ... }:
-
 let
-  sysconfig = (import <nixpkgs/nixos> {}).config;
+  sysconfig = (import <nixpkgs/nixos> { }).config;
   hostname = sysconfig.networking.hostName;
 in
 {
