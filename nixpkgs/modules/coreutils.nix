@@ -13,6 +13,8 @@
     fd
     jetbrains-mono
     vim
+    zip
+    unzip
   ];
 
   programs.direnv.enable = true;

@@ -15,8 +15,10 @@
     flameshot
     xclip
     multilockscreen
+    bitwarden-rofi
     dunst
     libnotify
+    arandr
   ];
 
   home.file = {

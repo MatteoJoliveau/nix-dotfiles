@@ -12,6 +12,11 @@ in
     clang
     meson
     cmake
+    rustup
+    docker-compose
+    httpie
+    insomnia
+    awscli
   ];
 
   programs.vscode.enable = true;

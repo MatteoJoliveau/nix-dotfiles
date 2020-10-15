@@ -3,10 +3,15 @@
 {
   home.packages = with pkgs; [
     libsecret
-    unstable.mailspring
+    mailspring
+    aerc
+    w3m
+    dante
     slack
+    teams
     discord
     gvfs
+    glib
     tdesktop
     bitwarden
     spotify

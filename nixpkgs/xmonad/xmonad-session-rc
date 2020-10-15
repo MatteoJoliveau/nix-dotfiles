@@ -13,7 +13,7 @@ setxkbmap -variant altgr-intl -option ctrl:nocaps
 timedatectl set-ntp true
 
 # Start a window compositor
-picom -b -d :0
+picom -b
 
 # Start a browser
 firefox &
