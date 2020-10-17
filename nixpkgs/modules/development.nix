@@ -17,6 +17,10 @@ in
     httpie
     insomnia
     awscli
+    boundary
+    kubectl
+    k9s
+    kubectx
   ];
 
   programs.vscode.enable = true;

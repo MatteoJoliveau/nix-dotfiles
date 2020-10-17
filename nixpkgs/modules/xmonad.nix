@@ -21,6 +21,15 @@
     arandr
   ];
 
+  programs.autorandr = {
+    enable = true;
+    hooks = {
+      postswitch = {
+        "change-background" = "~/.fehbg";
+      };
+    };
+  };
+
   home.file = {
     ".xprofile" = {
       source = ../xmonad/xmonad-session-rc;

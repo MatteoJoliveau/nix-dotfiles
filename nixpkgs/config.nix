@@ -10,5 +10,6 @@
 
     multilockscreen = callPackage pkgs/multilockscreen.nix { };
     bitwarden-rofi = callPackage pkgs/bitwarden-rofi.nix { };
+    boundary = callPackage pkgs/boundary.nix { };
   };
 }

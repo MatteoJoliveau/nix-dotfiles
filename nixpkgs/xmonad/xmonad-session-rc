@@ -27,8 +27,10 @@ slack &
 # Start Discord
 Discord &
 
-# Start Mailspring
-mailspring &
+# Start email client
+# alacritty -e aerc &
+
+# mailspring &
 
 # Start bluetooth connections
 connect-known-bt & > /dev/null

@@ -98,10 +98,14 @@
   services.hardware.bolt.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
-  services.xserver.videoDrivers = [ "intel" ];
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    xkbVariant = "altgr-intl";
+    xkbOptions = "eurosign:e ctrl:nocaps";
+    videoDrivers = [ "intel" ];
+  };
+
   services.xserver.displayManager.lightdm.greeters.enso = {
     enable = true;
     blur = true;

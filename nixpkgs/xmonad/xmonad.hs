@@ -392,7 +392,10 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
-myStartupHook = return ()
+myStartupHook :: X ()
+myStartupHook = do
+   setWMName "LG3D"
+   spawnOn "1:chats" (myTerminal ++ " -e aerc")
 
 
 ------------------------------------------------------------------------
@@ -408,8 +411,7 @@ main = do
           , ppSep = "   "
       }
       , manageHook = manageDocks <+> myManageHook
---      , startupHook = docksStartupHook <+> setWMName "LG3D"
-      , startupHook = setWMName "LG3D"
+      , startupHook = myStartupHook
       , handleEventHook = docksEventHook
   }
 
