@@ -21,9 +21,6 @@ firefox &
 # Start Telegram
 telegram-desktop &
 
-# Start Slack
-slack &
-
 # Start Discord
 Discord &
 

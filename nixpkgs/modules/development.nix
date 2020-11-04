@@ -13,7 +13,6 @@ in
     meson
     cmake
     rustup
-    docker-compose
     httpie
     insomnia
     awscli
@@ -21,6 +20,11 @@ in
     kubectl
     k9s
     kubectx
+    kubernetes-helm
+    kustomize
+    minikube
+    asciinema
+    jq
   ];
 
   programs.vscode.enable = true;

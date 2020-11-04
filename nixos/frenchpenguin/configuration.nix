@@ -30,6 +30,13 @@
   networking.hostName = "frenchpenguin"; # Define your hostname
   networking.networkmanager.enable = true;
   networking.interfaces.wlp59s0.useDHCP = true;
+  networking.extraHosts =
+  ''
+    127.0.0.1 containers.localhost
+    ::1 containers.localhost
+    172.17.0.2 minikube containers.minikube
+  '';
+
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -48,6 +55,7 @@
     git
     xorg.xmodmap
     haskellPackages.greenclip
+    docker-compose
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
