@@ -23,6 +23,7 @@
       l = "log --graph --name-status";
       ps = "push";
       psu = "push -u origin HEAD";
+      psf = "push --force-with-lease";
       me = "merge";
     };
     lfs.enable = true;

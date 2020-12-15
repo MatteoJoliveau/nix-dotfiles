@@ -25,6 +25,7 @@ in
     minikube
     asciinema
     jq
+    unstable.terraform_0_13
   ];
 
   programs.vscode.enable = true;
