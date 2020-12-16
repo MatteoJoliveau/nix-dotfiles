@@ -47,3 +47,5 @@ dunst &
 # Launch lockscreen manager
 xss-lock -l -- multilockscreen -l blur --off 600 &
 
+# Fix stuff with keyctl
+nix-shell -p keyutils --run "keyctl link @u @s"
