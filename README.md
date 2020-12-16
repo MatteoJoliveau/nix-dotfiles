@@ -14,7 +14,7 @@ First, install `home-manager`. More updated information can be found on [the off
 
 ```bash
 
-# $RELEASE matches the desired channel. For example use `master` for the main branch or `release-20.03` for the stable release.
+# $RELEASE matches the desired channel. For example use `master` for the main branch or `release-20.09` for the stable release.
 nix-channel --add https://github.com/nix-community/home-manager/archive/$RELEASE.tar.gz home-manager
 nix-channel --update
 
@@ -87,6 +87,7 @@ It requires having `nix-shell` and `direnv` installed and available, in which ca
 automatically when entering the root dir from a shell prompt.
 
 [Niv] is used for dependency management.
+
 ### Formatting
 
 `*.nix` source files are formatted using [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt).

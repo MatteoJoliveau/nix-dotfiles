@@ -395,7 +395,6 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 myStartupHook :: X ()
 myStartupHook = do
    setWMName "LG3D"
-   spawnOn "1:chats" (myTerminal ++ " -e aerc")
 
 
 ------------------------------------------------------------------------
