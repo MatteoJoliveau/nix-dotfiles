@@ -31,6 +31,9 @@
       commit = {
         template = "${homedir}/.config/git/message";
       };
+      pull = {
+        rebase = false;
+      };
     };
   };
 
