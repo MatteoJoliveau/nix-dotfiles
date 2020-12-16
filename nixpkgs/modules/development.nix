@@ -25,6 +25,7 @@ in
     minikube
     asciinema
     jq
+    ruby_2_7
     unstable.terraform_0_13
   ];
 
