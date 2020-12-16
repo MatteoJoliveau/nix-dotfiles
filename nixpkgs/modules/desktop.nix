@@ -12,6 +12,7 @@
     slack
     teams
     discord
+    zoom-us
     gvfs
     glib
     tdesktop
