@@ -24,6 +24,9 @@ telegram-desktop &
 # Start Discord
 Discord &
 
+# Start Slack
+slack &
+
 # Start email client
 # alacritty -e aerc &
 
