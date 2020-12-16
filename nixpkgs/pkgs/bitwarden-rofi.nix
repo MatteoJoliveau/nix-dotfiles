@@ -14,8 +14,9 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ makeWrapper pkgs.keyutils ];
   installPhase = with pkgs; ''
     mkdir -p $out/bin
-    install -Dm 755 bwmenu $out/bin/bwmenu
-    wrapProgram $out/bin/bwmenu --prefix PATH ":" ${stdenv.lib.makeBinPath [ rofi bitwarden-cli jq xclip xsel xdotool keyutils ]}
+    substitute bwmenu bwmenu.patched --replace /bin/bash "/usr/bin/env bash"
+    install -Dm 755 bwmenu.patched $out/bin/bwmenu
+    wrapProgram $out/bin/bwmenu --prefix PATH ":" ${stdenv.lib.makeBinPath [ bash rofi bitwarden-cli jq xclip xsel xdotool keyutils ]}
   '';
 
   fixupPhase = ''

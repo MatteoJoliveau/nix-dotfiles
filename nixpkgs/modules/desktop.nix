@@ -16,6 +16,7 @@
     glib
     tdesktop
     bitwarden
+    bitwarden-cli
     spotify
     unstable.yubioath-desktop
     xfce.thunar

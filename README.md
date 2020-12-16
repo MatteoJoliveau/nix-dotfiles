@@ -79,6 +79,23 @@ Running `home-manager switch` will update the system with the defined configurat
 1: DEs and window managers are installed system-wide and configured locally
 2: *For various reasons Greenclip is actually installed and started in `/etc/nixos/configuration.nix` but starts as a user service.*
 
+## Gotchas
+
+### Bitwarden Rofi (bwmenu)
+
+`bwmenu` needs some changes to the key configuration in order to work. These changes are configured in the fixup stage of the [derivation](./nixpkgs/pkgs/bitwarden-rofi.nix#L22), but it's a bit finicky. In case of errors like these:
+
+```
+keyctl_set_timeout: Permission denied
+keyctl_read_alloc: Permission denied
+```
+
+Simply run the following command. It only needs to be run once.
+
+```bash
+nix-shell -p keyutils --run "keyctl link @u @s"
+```
+
 ## Contributing
 
 This repo is (unsurprisingly) managed with [Nix Shells].
