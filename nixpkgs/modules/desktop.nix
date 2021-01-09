@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.packages = with pkgs; [
@@ -28,12 +28,14 @@
     steam
     steam-run-native
     libreoffice-fresh
+    deluge
   ];
 
   home.file.".face".source = ../images/propic.jpeg;
 
   home.sessionVariables = {
     GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
+    NSS_DEFAULT_DB_TYPE = "sql";
   };
 
   gtk = {
@@ -63,4 +65,15 @@
       "Xft.dpi" = "110";
     };
   };
+
+  home.activation.installNssDbCerts = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    ffdir=$HOME/.mozilla/firefox/$(ls $HOME/.mozilla/firefox | grep default)
+    if ! { [ -L "$ffdir/key4.db" ] && [ -L "$ffdir/cert9.db" ]; };
+    then 
+      $DRY_RUN_CMD mv $ffdir/key4.db $ffdir/cert9.db $HOME/.pki/nssdb/
+      $DRY_RUN_CMD ln -s ~/.pki/nssdb/key4.db $ffdir/key4.db
+      $DRY_RUN_CMD ln -s ~/.pki/nssdb/cert9.db $ffdir/cert9.db
+    fi
+    $DRY_RUN_CMD ${pkgs.nss.tools}/bin/certutil -A -t "C,," -n codexlab -i /etc/nixos/codexlab-ca.crt -d sql:$HOME/.pki/nssdb
+  '';
 }

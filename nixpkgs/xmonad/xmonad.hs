@@ -22,6 +22,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.Spacing
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.NamedScratchpad
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -160,6 +161,13 @@ xmobarCurrentWorkspaceColor = primaryColor
 -- Width of the window border in pixels.
 myBorderWidth = 1
 
+------------------------------------------------------------------------
+-- Scratchpads
+
+myScratchpads = [
+   -- run Spotify
+   NS "spotify" "spotify" (className =? "spotify") defaultFloating,
+]
 
 ------------------------------------------------------------------------
 -- Key bindings
@@ -245,6 +253,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((0, xF86XK_MonBrightnessDown),
      spawn "brightnessctl set 10%-")
 
+  -- Open Spotify scratchpad
+  , ((modMask .|. controlMask, xK_s),
+     namedScratchpadAction scratchpads "spotify")
+
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
   --
@@ -320,9 +332,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Decrement the number of windows in the master area.
   , ((modMask, xK_period),
      sendMessage (IncMasterN (-1)))
-
-  -- Toggle the status bar gap.
-  -- TODO: update this binding with avoidStruts, ((modMask, xK_b),
 
   -- Quit xmonad.
   , ((modMask .|. shiftMask, xK_z),
@@ -409,7 +418,7 @@ main = do
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
       }
-      , manageHook = manageDocks <+> myManageHook
+      , manageHook = manageDocks <+> myManageHook <+> namedScratchpadManageHook scratchpads
       , startupHook = myStartupHook
       , handleEventHook = docksEventHook
   }

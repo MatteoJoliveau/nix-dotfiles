@@ -15,6 +15,7 @@
     vim
     zip
     unzip
+    nmap
   ];
 
   programs.direnv.enable = true;
