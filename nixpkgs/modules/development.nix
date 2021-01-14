@@ -27,6 +27,7 @@ in
     jq
     ruby_2_7
     unstable.terraform_0_13
+    adoptopenjdk-openj9-bin-11
   ];
 
   programs.vscode.enable = true;

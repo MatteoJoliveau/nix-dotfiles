@@ -16,6 +16,8 @@
     zip
     unzip
     nmap
+    file
+    patchelf
   ];
 
   programs.direnv.enable = true;

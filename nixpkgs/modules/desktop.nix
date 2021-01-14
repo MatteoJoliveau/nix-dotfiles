@@ -29,6 +29,7 @@
     steam-run-native
     libreoffice-fresh
     deluge
+    audacity
   ];
 
   home.file.".face".source = ../images/propic.jpeg;
