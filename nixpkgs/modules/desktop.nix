@@ -30,6 +30,9 @@
     libreoffice-fresh
     deluge
     audacity
+    multimc
+    obs-studio
+    scribus
   ];
 
   home.file.".face".source = ../images/propic.jpeg;

@@ -18,6 +18,7 @@
     nmap
     file
     patchelf
+    inetutils
   ];
 
   programs.direnv.enable = true;

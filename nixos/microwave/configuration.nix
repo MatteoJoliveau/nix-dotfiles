@@ -34,6 +34,8 @@
     ::1 containers.localhost
   '';
 
+  # Add custom CA certs
+  security.pki.certificates = [ (builtins.readFile ./codexlab-ca.crt) ];
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -43,9 +45,16 @@
   };
   time.timeZone = "Europe/Rome";
 
+  # OpenDoas
+  security.doas = {
+    enable = true;
+    extraRules = [
+      { groups = [ "wheel" ]; keepEnv = true; persist = true; }
+    ];
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
-    doas
     bind
     wget
     vim
