@@ -1,17 +1,20 @@
 configuration {
-    modi: "combi,drun,window,run,ssh";
+    modi: "combi";
+    theme: "onedark";
+	icon-theme: "Papirus-Dark";
+	show-icons: true;
+	terminal: "alacritty";
+	combi-modi: "window,ssh,drun,run";
+	font: "JetBrains Mono 16";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-/*	font: "mono 12";*/
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
-/*	show-icons: false;*/
-/*	terminal: "rofi-sensible-terminal";*/
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host}";*/
 /*	run-command: "{cmd}";*/
@@ -19,7 +22,6 @@ configuration {
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "xkill -id {window}";*/
 /*	window-match-fields: "all";*/
-/*	icon-theme: ;*/
 /*	drun-match-fields: "name,generic,exec,categories";*/
 /*	drun-show-actions: false;*/
 /*	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";*/
@@ -33,7 +35,6 @@ configuration {
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
-/*	combi-modi: "window,run";*/
 /*	matching: "normal";*/
 /*	tokenize: true;*/
 /*	m: "-5";*/
@@ -52,7 +53,6 @@ configuration {
 /*	window-format: "{w}    {i}{c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-/*	theme: ;*/
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
