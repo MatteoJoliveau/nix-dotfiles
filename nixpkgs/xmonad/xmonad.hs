@@ -46,17 +46,20 @@ mySelectScreenshot = "select-screenshot"
 myScreenshot = "screenshot"
 
 -- The command to lookup an emoji
-myEmoji = "splatmoji type"
+myEmoji = "rofi -show emoji"
 
 -- The command to use as a launcher, to launch applications that don't have
 -- preset keybindings.
-myAppLauncher = "rofi -show combi -modi combi -combi-modi ssh,drun -theme onedark"
+myAppLauncher = "rofi -show drun"
+
+-- The command to use as a combi launcher, to launch multiple modes at once
+myCombiLauncher = "rofi -show combi"
 
 -- Password manager command
-myPasswordManager = "bwmenu -- -theme onedark"
+myPasswordManager = "bwmenu"
 
 -- Clipboard manager command
-myClipboardManager = "rofi -show clipboard -theme onedark -modi 'clipboard:greenclip print' -run-command '{cmd}'"
+myClipboardManager = "rofi -show clipboard"
 
 -- Location of your xmobar.hs / xmobarrc
 myXmobarrc = "~/.xmonad/xmobar.hs"
@@ -164,10 +167,7 @@ myBorderWidth = 1
 ------------------------------------------------------------------------
 -- Scratchpads
 
-myScratchpads = [
-   -- run Spotify
-   NS "spotify" "spotify" (className =? "spotify") defaultFloating,
-]
+myScratchpads = []
 
 ------------------------------------------------------------------------
 -- Key bindings
@@ -197,8 +197,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_d),
      spawn myAppLauncher)
 
-  -- Spawn the emoji selector using command specified by myEmoji.
+  -- Spawn the combi launcher using command specified by myCombiLauncher.
   , ((modMask .|. shiftMask, xK_d),
+     spawn myCombiLauncher)
+
+  -- Spawn the emoji selector using command specified by myEmoji.
+  , ((modMask .|. controlMask, xK_d),
      spawn myEmoji)
 
   -- Spawn NetworkManager Dmenu
@@ -252,10 +256,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Display Brightness Down
   , ((0, xF86XK_MonBrightnessDown),
      spawn "brightnessctl set 10%-")
-
-  -- Open Spotify scratchpad
-  , ((modMask .|. controlMask, xK_s),
-     namedScratchpadAction scratchpads "spotify")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
@@ -418,7 +418,7 @@ main = do
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
           , ppSep = "   "
       }
-      , manageHook = manageDocks <+> myManageHook <+> namedScratchpadManageHook scratchpads
+      , manageHook = manageDocks <+> myManageHook <+> namedScratchpadManageHook myScratchpads
       , startupHook = myStartupHook
       , handleEventHook = docksEventHook
   }

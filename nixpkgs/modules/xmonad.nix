@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     feh
     rofi
+    rofi-emoji
     xss-lock
     ranger
     dconf
