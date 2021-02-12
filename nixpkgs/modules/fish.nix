@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     unstable.starship
+    git-town
   ];
 
   programs.fish = {
@@ -15,6 +16,7 @@
       kns = "kubens";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       g = "git";
+      gt = "git town";
       ls = "exa";
       lg = "lazygit";
       rng = "ranger";
@@ -40,6 +42,7 @@
 
     shellInit = ''
       eval (direnv hook fish)
+      eval (git town completions fish)
     '';
 
     plugins = [

@@ -6,7 +6,6 @@
     gotop
     ffmpeg
     pulseaudio
-    pavucontrol
     exa
     bat
     ripgrep
