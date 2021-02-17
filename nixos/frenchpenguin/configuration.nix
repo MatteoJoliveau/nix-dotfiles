@@ -46,9 +46,16 @@
   };
   time.timeZone = "Europe/Rome";
 
+  # OpenDoas
+  security.doas = {
+    enable = true;
+    extraRules = [
+      { groups = [ "wheel" ]; keepEnv = true; persist = true; }
+    ];
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
-    doas
     wget
     vim
     neofetch
