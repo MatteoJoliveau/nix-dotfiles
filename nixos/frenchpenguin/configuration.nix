@@ -131,7 +131,7 @@
     enable = true;
     enableContribAndExtras = true;
   };
-
+  services.autorandr.enable = true;
   services.redshift = {
     enable = true;
     temperature.day = 6500;
