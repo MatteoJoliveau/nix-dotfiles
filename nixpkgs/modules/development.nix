@@ -33,6 +33,7 @@ in
     zola
     svcat
     lazygit
+    git-town
   ];
 
   programs.vscode.enable = true;

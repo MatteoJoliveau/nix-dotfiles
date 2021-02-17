@@ -33,6 +33,8 @@
     multimc
     obs-studio
     scribus
+    pavucontrol
+    paprefs
   ];
 
   home.file.".face".source = ../images/propic.jpeg;
