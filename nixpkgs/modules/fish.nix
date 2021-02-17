@@ -43,6 +43,7 @@
     shellInit = ''
       eval (direnv hook fish)
       eval (git town completions fish)
+      set -gx PATH $PATH $HOME/.krew/bin
     '';
 
     plugins = [

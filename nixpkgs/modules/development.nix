@@ -22,6 +22,7 @@ in
     kubectx
     kubernetes-helm
     kustomize
+    krew
     minikube
     unstable.kind
     asciinema
