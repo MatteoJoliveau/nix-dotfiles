@@ -1,7 +1,6 @@
 #! /usr/bin/env bash
 
 homedir=$( getent passwd "$USER" | cut -d: -f6 )
-here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 dst="$homedir/.config/nixpkgs"
 
 usage() {
@@ -23,6 +22,17 @@ run() {
     if [ ! -z "$DRY_RUN_CMD" ]; then
         echo "SIMULATED DRY RUN"
         echo ""
+    fi
+
+    hostname="$( hostname )"
+    here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+    if [ ! -f "$here/hosts/$hostname.nix" ]; then
+      echo "Unknown host \"$hostname\", did you forget to add its directory?"
+      echo "Available hosts:"
+      echo ""
+      ls $here/hosts/* | sed 's/.nix//g' | xargs -I '{}' basename '{}'
+      exit 1
     fi
 
     echo "Installing Nixpkgs"

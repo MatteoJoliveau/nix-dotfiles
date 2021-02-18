@@ -26,6 +26,14 @@ run() {
     hostname="$( hostname )"
     here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+    if [ ! -d "$here/$hostname" ]; then
+      echo "Unknown host \"$hostname\", did you forget to add its directory?"
+      echo "Available hosts:"
+      echo ""
+      ls -d $here/*/ | xargs -I '{}' basename '{}'
+      exit 1
+    fi
+
     echo "Installing NixOS configuration"
 
     echo "Removing $dst for clean symlink"
