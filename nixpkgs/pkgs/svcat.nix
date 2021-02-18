@@ -12,7 +12,7 @@ stdenv.mkDerivation {
     executable = true;
   };
 
-  phases = [ "installPhase" "patchPhase" ]; 
+  phases = [ "installPhase" "patchPhase" ];
 
   installPhase = ''
     mkdir -p $out/bin

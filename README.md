@@ -6,14 +6,58 @@ Nix recipes for my personal workstations.
 
 ### System Config
 
-TODO
+The entire system configuration is written in Nix and stored in the `nixos` directory of this repository. It is composed of a common configuration ([common.nix](./nixos/common.nix)) that includes stuff shared between all my machines, and a system-specific config that is stored in a directory matching the target hostname. To add new machines, simply add a new directory with the proper files.
+
+A few convenience scripts are provided to setup the system after first boot.
+
+#### During system install
+
+This guide assumes you have run the regular [NixOS install guide] up until [section 2.3, step 4]. Run the `nixos-generate-config` command to let NixOS detect your hardware, then set aside the `hardware-configuration.nix` file it creates. 
+
+Clone the repository somewhere handy. It doesn't really matter where, as we'll move it to the home folder after first boot. I usually clone it into the `tmp` folder so that it gets cleaned up after rebooting.
+
+```bash
+git clone git@github.com:matteojoliveau/nix-dotfiles.git /tmp/nix-dotfiles
+```
+
+
+At this point, instead of manually editing the `configuration.nix` file as it shows, run the `bootstrap.sh` script that can be found in the [nixos](./nixos/bootstrap.sh) directory of this repository. This will copy the appropriate files into the config folder.
+
+```bash
+/tmp/nixos/bootstrap.sh /mnt/etc/nixos
+```
+
+If you wish to use the generated `hardware-configuration.nix` file instead of the one provided in this repo, copy it to the target folder.
+
+You can now resume following the regular install guide.  
+Don't forget to run `passwd my-user` to setup a password for your user (actual username is configured in `common.nix`).
+
+#### After first boot
+
+Once the system is installed and you have rebooted into it with your personal user, clone the repository somewhere handy. The cloned directory will be symlinked with the files' final destination so that any change made to this repo will instantly reflect on the target system.
+
+```bash
+git clone git@github.com:matteojoliveau/nix-dotfiles.git ~/nix-dotfiles
+```
+
+Now run the install script. It will install the system configuration into the target directory (default is `/etc/nixos`).
+
+```bash
+cd ~/nix-dotfiles
+./nixos/install.sh
+doas nix-channel --update
+doas nixos-rebuild switch --upgrade
+```
+
+The script will delete and relink the target directory on every invocation, so it is safe to run multiple times.
+Running `nixos-rebuild switch` will update the system with the defined configuration.
+
 
 ### Home Config
 
 First, install `home-manager`. More updated information can be found on [the official repo](https://github.com/nix-community/home-manager/#installation), but a quick cheatsheet is provided below.
 
 ```bash
-
 # $RELEASE matches the desired channel. For example use `master` for the main branch or `release-20.09` for the stable release.
 nix-channel --add https://github.com/nix-community/home-manager/archive/$RELEASE.tar.gz home-manager
 nix-channel --update
@@ -21,18 +65,13 @@ nix-channel --update
 nix-shell '<home-manager>' -A install
 ```
 
-Clone the repository somewhere handy. The cloned directory will be symlinked with the files' final destination so that any change
-made to this repo will instantly reflect on the target system.
+This guide assumes you have already cloned this repo in your home folder as described in the ["After first boot"](#after-first-boot) section.
 
-```bash
-git clone git@github.com:matteojoliveau/nix-dotfiles.git ~/nix-dotfiles
-```
-
-Finally run the install script. It will install the home configuration for the current user.
+Now run the install script. It will install the home configuration for the current user.
 
 ```bash
 cd ~/nix-dotfiles
-./nixpkgs/install.sh
+nixpkgs/install.sh
 home-manager switch
 ```
 
@@ -45,8 +84,14 @@ Running `home-manager switch` will update the system with the defined configurat
 .
 ├── nix                                 # Niv directory
 ├── nixos                               # NixOS system configurations
+│  ├── bootstrap.sh                       # Bootstrap script
+│  ├── codexlab-ca.crt                    # Homelab internal CA certificate
 │  ├── common.nix                         # Shared config
-│  └── frenchpenguin                      # Frenchpenguin (work laptop) specific configs
+│  ├── frenchpenguin                      # Frenchpenguin (work laptop) specific configs
+│  |  ├── configuration.nix
+│  |  └── hardware-configuration.nix
+│  ├── install.sh                         # Install script
+│  └── microwave                          # Microwave (home desktop) specific configs
 │     ├── configuration.nix
 │     └── hardware-configuration.nix
 ├── nixpkgs                             # Home-Manager configuration
@@ -109,5 +154,7 @@ automatically when entering the root dir from a shell prompt.
 
 `*.nix` source files are formatted using [`nixpkgs-fmt`](https://github.com/nix-community/nixpkgs-fmt).
 
+[NixOS install guide]: https://nixos.org/manual/nixos/stable/index.html#sec-installation
+[section 2.3, step 4]: https://nixos.org/manual/nixos/stable/index.html#sec-installation
 [Nix Shells]: https://nixos.wiki/wiki/Development_environment_with_nix-shell
 [Niv]: https://github.com/nmattia/niv

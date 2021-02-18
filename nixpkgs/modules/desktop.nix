@@ -72,7 +72,7 @@
     };
   };
 
-  home.activation.installNssDbCerts = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.installNssDbCerts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     crt="/etc/nixos/codexlab-ca.crt"
     if [ -f "$crt" ]; then
       ffdir=$HOME/.mozilla/firefox/$(ls $HOME/.mozilla/firefox | grep default)
