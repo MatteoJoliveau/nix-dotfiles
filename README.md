@@ -17,7 +17,7 @@ This guide assumes you have run the regular [NixOS install guide] up until [sect
 Clone the repository somewhere handy. It doesn't really matter where, as we'll move it to the home folder after first boot. I usually clone it into the `tmp` folder so that it gets cleaned up after rebooting.
 
 ```bash
-git clone git@github.com:matteojoliveau/nix-dotfiles.git /tmp/nix-dotfiles
+git clone https://github.com/matteojoliveau/nix-dotfiles.git /tmp/nix-dotfiles
 ```
 
 
@@ -37,14 +37,14 @@ Don't forget to run `passwd my-user` to setup a password for your user (actual u
 Once the system is installed and you have rebooted into it with your personal user, clone the repository somewhere handy. The cloned directory will be symlinked with the files' final destination so that any change made to this repo will instantly reflect on the target system.
 
 ```bash
-git clone git@github.com:matteojoliveau/nix-dotfiles.git ~/nix-dotfiles
+git clone https://github.com/matteojoliveau/nix-dotfiles.git ~/nix-dotfiles
 ```
 
 Now run the install script. It will install the system configuration into the target directory (default is `/etc/nixos`).
 
 ```bash
 cd ~/nix-dotfiles
-./nixos/install.sh
+nixos/install.sh
 doas nix-channel --update
 doas nixos-rebuild switch --upgrade
 ```
