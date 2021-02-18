@@ -11,13 +11,6 @@
 
   # Networking
   networking.hostName = "microwave"; # Define your hostname
-  networking.networkmanager.enable = true;
-  networking.extraHosts =
-    ''
-      127.0.0.1 containers.localhost
-      ::1 containers.localhost
-    '';
-
 
   # Use NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];

@@ -1,6 +1,15 @@
 { config, pkgs, ... }:
 
 {
+  # Networking
+  networking.networkmanager.enable = true;
+  networking.enableIPv6 = true;
+  networking.extraHosts =
+    ''
+      127.0.0.1 containers.localhost
+      ::1 containers.localhost
+    '';
+
   # Configure GRUB 
   boot.loader = {
     efi = {
