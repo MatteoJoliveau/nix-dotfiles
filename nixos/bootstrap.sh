@@ -15,7 +15,12 @@ usage() {
 run() {
     if [ "$EUID" -ne 0 ]; then
         echo "Please run this script as root"
-        exit
+        exit 1
+    fi
+
+    if [ ! -z "$DRY_RUN_CMD" ]; then
+        echo "SIMULATED DRY RUN"
+        echo ""
     fi
 
     hostname="$( hostname )"
@@ -51,8 +56,7 @@ run() {
 for arg in "$@"; do
   shift
   case "$arg" in
-    "--help") usage ;;
-    "-h") usage ;;
+    "-h"|"--help") usage ;;
     "--dry-run") DRY_RUN_CMD="echo" ;;
     *) dst="$arg"
   esac
