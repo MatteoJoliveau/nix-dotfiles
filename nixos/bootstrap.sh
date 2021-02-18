@@ -3,7 +3,7 @@
 dst="/etc/nixos"
 
 usage() {
-    echo "Usage: bootstrap.sh [target dir]"
+    echo "Usage: bootstrap.sh [flags] [TARGETDIR]"
     echo ""
     echo "Copies the initial NixOS configuration for this machine into the target directory (defaults to $dst). Should only be run once and then switch to install.sh, but overrall safe to be run multiple times."
     echo ""

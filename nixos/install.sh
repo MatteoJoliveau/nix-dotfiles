@@ -3,9 +3,9 @@
 dst="/etc/nixos"
 
 usage() {
-    echo "Usage: install.sh"
+    echo "Usage: install.sh [flags] [TARGETDIR]"
     echo ""
-    echo "Symlinks the proper NixOS configuration for this machine into '$dst'. Safe to be run multiple times."
+    echo "Symlinks the proper NixOS configuration for this machine the target directory (defaults to $dst). Safe to be run multiple times."
     echo ""
     echo "    --dry-run   prints the commands it would run without actually executing them"
     echo "  -h, --help    prints this message and exits"
@@ -50,6 +50,7 @@ for arg in "$@"; do
     "--help") usage ;;
     "-h") usage ;;
     "--dry-run") DRY_RUN_CMD="echo" ;;
+    *) dst="$arg"
   esac
 done
 
