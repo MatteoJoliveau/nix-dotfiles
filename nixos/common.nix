@@ -65,6 +65,7 @@
     noto-fonts-cjk
     noto-fonts-emoji
     plymouth
+    virt-manager
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -124,6 +125,12 @@
   # Enable Docker
   virtualisation.docker.enable = true;
 
+  # Enable Virt Manager
+  virtualisation.libvirtd = {
+    enable = true;
+    onBoot = "ignore";
+  };
+
   # USB devices (Yubikey, Logitech receiver)
   services.pcscd.enable = true;
   services.udev.packages = [ pkgs.solaar pkgs.yubikey-personalization pkgs.libu2f-host ];
@@ -142,7 +149,7 @@
   programs.fish.enable = true;
   users.users.matteo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "networkmanager" ];
+    extraGroups = [ "wheel" "docker" "networkmanager" "libvirtd" ];
     shell = pkgs.fish;
   };
 
