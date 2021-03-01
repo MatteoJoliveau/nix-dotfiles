@@ -35,6 +35,7 @@
     scribus
     pavucontrol
     paprefs
+    vlc
   ];
 
   home.file.".face".source = ../images/propic.jpeg;

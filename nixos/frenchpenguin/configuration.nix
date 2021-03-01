@@ -11,10 +11,14 @@
       <nixos-hardware/common/cpu/intel>
     ];
 
-
   # Networking
   networking.hostName = "frenchpenguin"; # Define your hostname
   networking.interfaces.wlp59s0.useDHCP = true;
+
+  # Additional packages
+  environment.systemPackages = with pkgs; [
+    firehol
+  ];
 
   # Enable Bluetooth
   hardware.bluetooth = {
