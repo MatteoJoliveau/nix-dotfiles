@@ -16,7 +16,7 @@ in
     ./modules/xmonad.nix
   ];
 
-   nixpkgs.overlays = [ (import ./overlays/discord.nix) ];
+  nixpkgs.overlays = [ (import ./overlays/discord.nix) ];
 
   home.username = username;
   home.homeDirectory = homedir;
