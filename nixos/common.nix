@@ -51,6 +51,9 @@
     ];
   };
 
+  # NTP
+  services.chrony.enable = true;
+
   # System packages
   environment.systemPackages = with pkgs; [
     bind
