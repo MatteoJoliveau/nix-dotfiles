@@ -35,6 +35,11 @@
   # Add custom CA certs
   security.pki.certificates = [ (builtins.readFile ./codexlab-ca.crt) ];
 
+  # Add Kernel modules
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    v4l2loopback
+  ];
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
