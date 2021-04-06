@@ -36,6 +36,7 @@
       hm = "home-manager";
       tree = "ls -T";
       finlogin = "kubelogin -n finleap-dev --username matteo.joliveau --password (bw get password 'Finleap LDAP'); and sed \"s@fcloud/dev-ca.pem@$HOME/.kube/fcloud/dev-ca.pem@g\" ~/.kube/config -i";
+      ecrlogin = "eval (aws ecr get-login --no-include-email)";
     };
 
     promptInit = "eval (starship init fish)";

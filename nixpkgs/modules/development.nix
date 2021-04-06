@@ -35,6 +35,7 @@ in
     svcat
     lazygit
     git-town
+    argocd
   ];
 
   programs.vscode.enable = true;

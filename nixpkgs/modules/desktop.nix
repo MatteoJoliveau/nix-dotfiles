@@ -31,7 +31,7 @@
     deluge
     audacity
     multimc
-    obs-studio
+    unstable.obs-studio
     scribus
     pavucontrol
     paprefs
