@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+let
+  unstable = import <nixos-unstable> {
+    config.allowUnfree = true;
+  };
+in
 {
   imports =
     [
@@ -8,6 +13,8 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+
+  boot.kernelPackages = unstable.linuxPackages_latest;
 
   # Networking
   networking.hostName = "microwave"; # Define your hostname
