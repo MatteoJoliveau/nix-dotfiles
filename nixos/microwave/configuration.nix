@@ -12,6 +12,8 @@ in
       ../common.nix
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <nixos-hardware/common/cpu/intel>
+      <nixos-hardware/common/pc/ssd>
     ];
 
   boot.kernelPackages = unstable.linuxPackages_latest;

@@ -23,8 +23,14 @@
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/4176-0ED9";
+      device = "/dev/disk/by-uuid/C72C-AFA0";
       fsType = "vfat";
+    };
+
+  fileSystems."/var/lib/docker" =
+    {
+      device = "/dev/disk/by-label/docker";
+      fsType = "btrfs";
     };
 
   swapDevices = [
