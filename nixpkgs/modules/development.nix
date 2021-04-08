@@ -30,7 +30,7 @@ in
     yq
     ruby_2_7
     unstable.terraform_0_13
-    adoptopenjdk-openj9-bin-11
+    adoptopenjdk-bin
     zola
     svcat
     lazygit
