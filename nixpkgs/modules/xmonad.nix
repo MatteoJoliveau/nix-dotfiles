@@ -42,6 +42,7 @@
     ".xmonad/bin/select-screenshot".source = ../xmonad/bin/select-screenshot;
     ".xmonad/bin/connect-known-bt".source = ../xmonad/bin/connect-known-bt;
     "Pictures/wallpaper.png".source = ../images/wallpaper.png;
+    "Pictures/propic.jpg".source = ../images/propic.jpg;
   };
 
   xdg.configFile = {
