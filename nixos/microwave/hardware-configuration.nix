@@ -27,12 +27,6 @@
       fsType = "vfat";
     };
 
-  fileSystems."/var/lib/docker" =
-    {
-      device = "/dev/disk/by-label/docker";
-      fsType = "btrfs";
-    };
-
   swapDevices = [
     {
       device = "/dev/disk/by-label/swap";
