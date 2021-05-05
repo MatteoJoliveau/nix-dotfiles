@@ -3,15 +3,11 @@ let
   nodejs = pkgs.unstable.nodejs-14_x;
   yarn = pkgs.yarn;
   clang = pkgs.clang_10;
-  idea = pkgs.unstable.jetbrains.idea-ultimate.override {
-    jdk = pkgs.adoptopenjdk-bin;
-  };
 in
 {
   home.packages = with pkgs; [
     nodejs
     yarn
-    idea
     clang
     meson
     cmake
@@ -39,6 +35,7 @@ in
     lazygit
     git-town
     argocd
+    unstable.jetbrains.idea-ultimate
   ];
 
   programs.vscode.enable = true;
