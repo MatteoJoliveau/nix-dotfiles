@@ -74,6 +74,7 @@
     noto-fonts-emoji
     plymouth
     virt-manager
+    usbutils
   ];
 
   nixpkgs.config.allowUnfree = true;

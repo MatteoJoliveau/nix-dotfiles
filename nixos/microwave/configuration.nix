@@ -18,6 +18,11 @@ in
 
   boot.kernelPackages = unstable.linuxPackages_latest;
 
+  # Drawing tablet support
+  boot.extraModulePackages = with config.boot.kernelPackages; [ digimend ];
+  environment.etc."X11/xorg.conf.d/50-huion.conf".source = ./50-huion.conf;
+
+
   # Networking
   networking.hostName = "microwave"; # Define your hostname
 
