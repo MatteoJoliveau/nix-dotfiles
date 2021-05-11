@@ -16,7 +16,8 @@ in
       <nixos-hardware/common/pc/ssd>
     ];
 
-  boot.kernelPackages = unstable.linuxPackages_latest;
+  # We need the unstable package to get Linux 5.11, since it's the first version to properly support Zen 2 CPUs (Microwave rocks an R7 5800x)
+  boot.kernelPackages = unstable.linuxPackages_zen;
 
   # Drawing tablet support
   boot.extraModulePackages = with config.boot.kernelPackages; [ digimend ];
