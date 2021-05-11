@@ -8,7 +8,6 @@ in
   home.packages = with pkgs; [
     nodejs
     yarn
-    idea
     clang
     meson
     cmake
