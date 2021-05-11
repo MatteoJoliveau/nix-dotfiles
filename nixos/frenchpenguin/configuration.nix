@@ -11,6 +11,8 @@
       <nixos-hardware/common/cpu/intel>
     ];
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   # Networking
   networking.hostName = "frenchpenguin"; # Define your hostname
   networking.interfaces.wlp59s0.useDHCP = true;
