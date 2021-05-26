@@ -36,6 +36,7 @@
     pavucontrol
     paprefs
     vlc
+    ark
   ];
 
   home.file.".face".source = ../images/propic.jpg;
