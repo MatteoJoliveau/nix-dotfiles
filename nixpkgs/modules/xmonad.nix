@@ -27,6 +27,7 @@
     hooks = {
       postswitch = {
         "change-background" = "~/.fehbg";
+        "generate-lockscreen" = "multilockscreen -u ~/Pictures/wallpaper.png";
       };
     };
   };

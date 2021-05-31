@@ -6,7 +6,6 @@
     libsecret
     mailspring
     firefox
-    aerc
     w3m
     dante
     slack
@@ -17,7 +16,7 @@
     glib
     tdesktop
     bitwarden
-    bitwarden-cli
+    pkgs.unstable.bitwarden-cli
     spotify
     unstable.yubioath-desktop
     ark
@@ -62,7 +61,10 @@
         package = pkgs.roboto;
         name = "Roboto 11";
       };
-    gtk3.extraConfig.gtk-cursor-theme-name = "breeze";
+    gtk3.extraConfig = {
+      gtk-cursor-theme-name = "breeze";
+      gtk-application-prefer-dark-theme = 1;
+    };
   };
 
   qt = {
