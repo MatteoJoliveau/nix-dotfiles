@@ -20,6 +20,7 @@
     bitwarden-cli
     spotify
     unstable.yubioath-desktop
+    ark
     xfce.thunar
     xfce.thunar-volman
     xfce.thunar-archive-plugin
@@ -36,6 +37,7 @@
     pavucontrol
     paprefs
     vlc
+    desktop-file-utils
   ];
 
   home.file.".face".source = ../images/propic.jpg;
