@@ -74,7 +74,9 @@
         editor.attachment_directory = "~/Downloads/mails";
         thread_view = {
           open_html_part_external = "true";
-          preferred_type = "html";
+        };
+        startup.queries = {
+          todo = "tag:todo";
         };
       };
     };
