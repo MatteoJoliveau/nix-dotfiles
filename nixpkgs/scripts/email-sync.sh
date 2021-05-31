@@ -25,8 +25,6 @@ do
     esac
 done
 
-astroid --start-polling || true
-
 if [ "$pull" = true ]; then
     mbsync --all --pull
 fi
@@ -47,5 +45,3 @@ if [ "$unread" -gt 0 ]; then
 fi
 
 echo You have "$unread" new "$email"
-
-astroid --stop-polling || true
