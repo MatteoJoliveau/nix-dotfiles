@@ -13,5 +13,6 @@
     boundary = callPackage pkgs/boundary.nix { };
     svcat = callPackage pkgs/svcat.nix { };
     krew = callPackage pkgs/krew.nix { };
+    email-sync = callPackage pkgs/email-sync.nix { };
   };
 }

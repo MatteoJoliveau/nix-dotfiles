@@ -136,8 +136,11 @@ emails. On first setup of a new host, the following manual steps must be followe
   Run `secret-tool store --label 'Fastmail password' fastmail password` then type the password in.
 - run `mbsync --all` to pull emails from the provider for the first time and initialize the maildir
 - exit and re-enter the Linux session (C-z on XMonad) to reload the environment
+- optionally: check that `mbsync.timer` is running, and enable/start if needed by running `systemctl --user enable --now mbsync.timer`
 
-Emails are polled every 20 seconds by Astroid (which needs to be up and running) using the `email-sync.sh` script which does a few things, including pulling emails, moving archived emails to the `Archive` directory so that they are archived on Fastmail too, and reindexing `notmuch`.
+Emails are polled every minute via a SystemD Timer called `mbsync.timer` which will pull emails(which needs to be up and running) using the `email-sync` script which does a few things, including moving archived emails to the `Archive` directory so that they are archived on Fastmail too, reindexing `notmuch` and updating the Astroid UI.
+
+`mbsync` logs can be accessed by running `journalctl --user -u mbsync.service`
 
 ## Gotchas
 

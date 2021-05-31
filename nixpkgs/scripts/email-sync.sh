@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 
+export NOTMUCH_CONFIG="$HOME/.config/notmuch/notmuchrc"
 MAIL_ACCOUNT="Personal"
 MAILDIR="$HOME/.mail/$MAIL_ACCOUNT"
-poll=false
+pull=false
 
 # Move a message file while removing its UID-part
 function safeMove { s=${1##*/}; s=${s%%,*}; mv -f $1 $2/$s; }
 
-params="$(getopt -o p -l poll --name "$0" -- "$@")"
+params="$(getopt -o p -l pull --name "$0" -- "$@")"
 eval set -- "$params"
 
 while true
 do
     case "$1" in
-        -p|--poll)
-            poll=true
+        -p|--pull)
+            pull=true
             shift 2
             ;;
         --)
@@ -27,11 +28,12 @@ do
     esac
 done
 
-if [ "$poll" = true ]; then
-    astroid --start-polling || true
+astroid --start-polling || true
+
+if [ "$pull" = true ]; then
+    mbsync --all
 fi
 
-mbsync --all
 notmuch new --no-hooks
 
 unread=$(notmuch count --output=files tag:unread AND tag:inbox)
@@ -55,7 +57,6 @@ done
 echo Moving $(notmuch count --output=files "folder:$MAIL_ACCOUNT/Archive AND tag:inbox OR tag:todo") \
      archived messages from Archive to Inbox folder
 for i in $(notmuch search --output=files "folder:$MAIL_ACCOUNT/Archive AND tag:inbox OR tag:todo"); do
-    s=${i##*/}; s=${s%%,*}; echo "$i -> $MAILDIR/Inbox/cur/$s"
     safeMove $i "$MAILDIR/Inbox/cur"
 done
 
@@ -71,6 +72,4 @@ notmuch tag -archived +inbox folder:$MAIL_ACCOUNT/Inbox AND NOT tag:todo
 notmuch tag -archived folder:$MAIL_ACCOUNT/Inbox AND tag:todo
 notmuch tag +archived -inbox -unread folder:$MAIL_ACCOUNT/Archive
 
-if [ "$poll" = true ]; then
-    astroid --stop-polling || true
-fi
+astroid --stop-polling || true

@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    email-sync
+  ];
+
   # TODO: cal and card sync with vdirsync (https://github.com/kzar/davemail/blob/main/.vdirsyncerrc)
   accounts.email = {
     maildirBasePath = ".mail";
@@ -55,22 +59,22 @@
     };
   };
 
+  services.mbsync = {
+    enable = true;
+    frequency = "*:*:0/50"; # every 50s, this is so that systemd uses the precise default of 1m minimum resolution.
+    postExec = "${pkgs.email-sync}/bin/email-sync";
+  };
+
   programs = {
     mbsync.enable = true;
     msmtp.enable = true;
-    notmuch = {
-      enable = true;
-      hooks = {
-        preNew = "$HOME/.local/bin/email-sync.sh";
-      };
-    };
+    notmuch.enable = true;
     astroid = {
       enable = true;
       externalEditor = "alacritty -e vim -c 'set ft=mail' '+set tw=72' %1";
-      pollScript = "email-sync.sh";
 
       extraConfig = {
-        poll.interval = 20;
+        poll.interval = 0;
         editor.attachment_directory = "~/Downloads/mails";
         thread_view = {
           open_html_part_external = "true";
@@ -84,11 +88,4 @@
 
   # Enable when Home Manager 21.05 comes out with goimapnotify instead of node-imapnotify
   services.imapnotify.enable = false;
-
-  home.file = {
-    ".local/bin/email-sync.sh" = {
-      source = ../scripts/email-sync.sh;
-      executable = true;
-    };
-  };
 }
