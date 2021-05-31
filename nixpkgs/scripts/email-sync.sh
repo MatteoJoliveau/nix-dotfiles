@@ -45,3 +45,6 @@ if [ "$unread" -gt 0 ]; then
 fi
 
 echo You have "$unread" new "$email"
+
+# Refresh alot's interface
+pkill -USR1 alot

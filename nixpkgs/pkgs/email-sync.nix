@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   installPhase = with pkgs; ''
     mkdir -p $out/bin
     install -Dm 755 ./email-sync.sh $out/bin/${name}
-    wrapProgram $out/bin/${name} --prefix PATH ":" ${stdenv.lib.makeBinPath [ bash isync notmuch astroid coreutils libnotify afew ]}
+    wrapProgram $out/bin/${name} --prefix PATH ":" ${stdenv.lib.makeBinPath [ bash isync notmuch astroid coreutils libnotify afew procps ]}
   '';
 
   meta = {
