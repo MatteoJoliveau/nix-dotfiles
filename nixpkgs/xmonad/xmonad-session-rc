@@ -1,16 +1,13 @@
 #!/bin/sh
 
 # Configure PATH so that we can access our scripts below
-PATH=$PATH:~/.cabal/bin:~/.xmonad/bin
+export PATH=$PATH:~/.cabal/bin:~/.xmonad/bin:~/.local/bin
 
 # Configure X
 xsetroot -cursor_name left_ptr &
 xrdb -merge ~/.Xdefaults &
 xmodmap ~/.xmodmap
 setxkbmap -variant altgr-intl -option ctrl:nocaps
-
-# Configure NTP
-timedatectl set-ntp true
 
 # Start a window compositor
 picom -b
@@ -28,9 +25,7 @@ Discord &
 slack &
 
 # Start email client
-# alacritty -e aerc &
-
-# mailspring &
+astroid &
 
 # Start bluetooth connections
 connect-known-bt & > /dev/null
