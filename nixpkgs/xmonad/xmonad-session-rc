@@ -25,7 +25,7 @@ Discord &
 slack &
 
 # Start email client
-astroid &
+alacritty -e alot &
 
 # Start bluetooth connections
 connect-known-bt & > /dev/null
