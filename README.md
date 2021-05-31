@@ -138,7 +138,7 @@ emails. On first setup of a new host, the following manual steps must be followe
 - exit and re-enter the Linux session (C-z on XMonad) to reload the environment
 - optionally: check that `mbsync.timer` is running, and enable/start if needed by running `systemctl --user enable --now mbsync.timer`
 
-Emails are polled every minute via a SystemD Timer called `mbsync.timer` which will pull emails(which needs to be up and running) using the `email-sync` script which does a few things, including moving archived emails to the `Archive` directory so that they are archived on Fastmail too, reindexing `notmuch` and updating the Astroid UI.
+Emails are polled every minute via a SystemD Timer called `mbsync.timer` which pulls emails via IMAP and then runs the `email-sync` script which does a few things, including moving archived emails to the `Archive` directory so that they are archived on Fastmail too, reindexing `notmuch` and updating the Astroid UI.
 
 `mbsync` logs can be accessed by running `journalctl --user -u mbsync.service`
 
