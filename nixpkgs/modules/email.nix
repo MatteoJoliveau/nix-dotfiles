@@ -42,17 +42,14 @@
           patterns = [ "*" ];
           create = "maildir";
         };
-        astroid = {
-          enable = true;
-          sendMailCommand = "msmtp --read-envelope-from --read-recipients";
-        };
+
         msmtp.enable = true;
         imapnotify = {
           enable = true;
           boxes = [ "Inbox" ];
           onNotify = "/usr/bin/env";
           onNotifyPost = {
-            mail = "${pkgs.notmuch}/bin/notmuch new && ${pkgs.libnotify}/bin/notify-send 'New mail arrived'";
+            mail = "${pkgs.email-sync}/bin/email-sync";
           };
         };
       };
@@ -61,7 +58,7 @@
 
   services.mbsync = {
     enable = true;
-    frequency = "*:*:0/50"; # every 50s, this is so that systemd uses the precise default of 1m minimum resolution.
+    frequency = "*:0/5"; # every 5m
     postExec = "${pkgs.email-sync}/bin/email-sync";
   };
 
@@ -69,23 +66,50 @@
     mbsync.enable = true;
     msmtp.enable = true;
     notmuch.enable = true;
-    astroid = {
+    alot = {
       enable = true;
-      externalEditor = "alacritty -e vim -c 'set ft=mail' '+set tw=72' %1";
-
-      extraConfig = {
-        poll.interval = 0;
-        editor.attachment_directory = "~/Downloads/mails";
-        thread_view = {
-          open_html_part_external = "true";
+      bindings = {
+        global = {
+            T = "search tag:todo";
         };
-        startup.queries = {
-          todo = "tag:todo";
+        search = {
+            t = "toggletags todo";
         };
       };
+    };
+    afew = {
+      enable = true;
+      extraConfig = ''
+        [MailMover]
+        folders = Personal/Inbox Personal/Archive Personal/Trash Personal/Spam Personal/Drafts
+        rename = True
+        max_age = 15
+
+        Personal/Inbox = 'tag:spam':Personal/Spam 'tag:deleted':Personal/Trash 'NOT tag:inbox OR tag:archived':Personal/Archive
+        Personal/Trash = 'NOT tag:deleted AND tag:inbox':Personal/Inbox 'NOT tag:deleted AND tag:draft':Personal/Drafts 'NOT tag:deleted':Personal/Archive
+        Personal/Drafts = 'tag:deleted':Personal/Trash
+        Personal/Archive =
+        Personal/Spam =
+
+        [SpamFilter]
+        [KillThreadsFilter]
+        [ListMailsFilter]
+        [ArchiveSentMailsFilter]
+
+        [Filter.1]
+        query = 'dave@dmdave.com'
+        tags = +newsletter
+        message = DMDave newsletter
+      '';
     };
   };
 
   # Enable when Home Manager 21.05 comes out with goimapnotify instead of node-imapnotify
   services.imapnotify.enable = false;
+
+  home.file = {
+    ".mailcap".text = ''
+      text/html;  w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
+    '';
+  };
 }

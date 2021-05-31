@@ -129,8 +129,8 @@ Running `home-manager switch` will update the system with the defined configurat
 ## Email
 
 The `email.nix` module configures my local email setup. It uses `mbsync` (from the `isync` package) to synchronize the maildir with my remote IMAP provider (currently Fastmail), 
-`msmtp` to send emails via the SMTP provider (currently still Fastmail), `notmuch` to index, tag and search emails locally, and `astroid` as the graphical interface to read, search and compose
-emails. On first setup of a new host, the following manual steps must be followed:
+`msmtp` to send emails via the SMTP provider (currently still Fastmail), `notmuch` to index, tag and search emails locally, `anew` to automatically manage tags and folders
+and `alot` as the graphical interface to read, search and compose emails. On first setup of a new host, the following manual steps must be followed:
 
 - add the Fastmail password to the local keychain. Using a device-specific [app password](https://www.fastmail.help/hc/en-us/articles/360058752854-App-passwords) is highly recommended
   Run `secret-tool store --label 'Fastmail password' fastmail password` then type the password in.
@@ -138,7 +138,8 @@ emails. On first setup of a new host, the following manual steps must be followe
 - exit and re-enter the Linux session (C-z on XMonad) to reload the environment
 - optionally: check that `mbsync.timer` is running, and enable/start if needed by running `systemctl --user enable --now mbsync.timer`
 
-Emails are polled every minute via a SystemD Timer called `mbsync.timer` which pulls emails via IMAP and then runs the `email-sync` script which does a few things, including moving archived emails to the `Archive` directory so that they are archived on Fastmail too, reindexing `notmuch` and updating the Astroid UI.
+Emails are polled every minute via a SystemD Timer called `mbsync.timer` which pulls emails via IMAP and then runs the `email-sync` script which does a few things, 
+including moving archived emails to the `Archive` directory so that they are archived on Fastmail too, reindexing `notmuch` and applying `afew` rules.
 
 `mbsync` logs can be accessed by running `journalctl --user -u mbsync.service`
 
