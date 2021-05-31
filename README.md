@@ -105,9 +105,11 @@ Running `home-manager switch` will update the system with the defined configurat
 │  ├── install.sh                         # Install script
 │  ├── modules                            # Reusable components that install and configure various aspects of the system
 │  │  ├── alacritty.nix                     # Alacritty (terminal emulator)
+│  │  ├── bluetooth.nix                     # Bluetooth configuration (for hosts that support it)
 │  │  ├── coreutils.nix                     # System core components (vim, exa, environment variables, etc)
 │  │  ├── desktop.nix                       # GUI-related software (chats, email, Steam, file explorer, GTK theme, etc) [1]
 │  │  ├── development.nix                   # Sofware development tools (editors, compilers, language runtimes, etc)
+│  │  ├── email.nix                         # Email setup and tools
 │  │  ├── fish.nix                          # Fish shell
 │  │  ├── git.nix                           # Git
 │  │  ├── gpg.nix                           # GPG and Keybase
@@ -123,6 +125,19 @@ Running `home-manager switch` will update the system with the defined configurat
 
 1: DEs and window managers are installed system-wide and configured locally
 2: *For various reasons Greenclip is actually installed and started in `/etc/nixos/configuration.nix` but starts as a user service.*
+
+## Email
+
+The `email.nix` module configures my local email setup. It uses `mbsync` (from the `isync` package) to synchronize the maildir with my remote IMAP provider (currently Fastmail), 
+`msmtp` to send emails via the SMTP provider (currently still Fastmail), `notmuch` to index, tag and search emails locally, and `astroid` as the graphical interface to read, search and compose
+emails. On first setup of a new host, the following manual steps must be followed:
+
+- add the Fastmail password to the local keychain. Using a device-specific [app password](https://www.fastmail.help/hc/en-us/articles/360058752854-App-passwords) is highly recommended
+  Run `secret-tool store --label 'Fastmail password' fastmail password` then type the password in.
+- run `mbsync --all` to pull emails from the provider for the first time and initialize the maildir
+- exit and re-enter the Linux session (C-z on XMonad) to reload the environment
+
+Emails are polled every 20 seconds by Astroid (which needs to be up and running) using the `email-sync.sh` script which does a few things, including pulling emails, moving archived emails to the `Archive` directory so that they are archived on Fastmail too, and reindexing `notmuch`.
 
 ## Gotchas
 
