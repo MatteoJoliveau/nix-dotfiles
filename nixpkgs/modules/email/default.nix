@@ -75,32 +75,18 @@
         search = {
             t = "toggletags todo";
         };
+        thread = {
+            B = "call hooks.open_in_browser(ui)";
+        };
+        envelope = {
+            B = "call hooks.open_in_browser(ui)";
+        };
       };
+      hooks = builtins.readFile ./alot_hooks.py;
     };
     afew = {
       enable = true;
-      extraConfig = ''
-        [MailMover]
-        folders = Personal/Inbox Personal/Archive Personal/Trash Personal/Spam Personal/Drafts
-        rename = True
-        max_age = 15
-
-        Personal/Inbox = 'tag:spam':Personal/Spam 'tag:deleted':Personal/Trash 'NOT tag:inbox OR tag:archived':Personal/Archive
-        Personal/Trash = 'NOT tag:deleted AND tag:inbox':Personal/Inbox 'NOT tag:deleted AND tag:draft':Personal/Drafts 'NOT tag:deleted':Personal/Archive
-        Personal/Drafts = 'tag:deleted':Personal/Trash
-        Personal/Archive =
-        Personal/Spam =
-
-        [SpamFilter]
-        [KillThreadsFilter]
-        [ListMailsFilter]
-        [ArchiveSentMailsFilter]
-
-        [Filter.1]
-        query = 'dave@dmdave.com'
-        tags = +newsletter
-        message = DMDave newsletter
-      '';
+      extraConfig = builtins.readFile ./afew.cfg;
     };
   };
 

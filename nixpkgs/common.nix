@@ -9,7 +9,7 @@ in
     ./modules/coreutils.nix
     ./modules/desktop.nix
     ./modules/development.nix
-    ./modules/email.nix
+    ./modules/email
     ./modules/fish.nix
     (import ./modules/git.nix { homedir = homedir; })
     ./modules/gpg.nix
