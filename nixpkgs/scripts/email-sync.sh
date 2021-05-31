@@ -52,22 +52,23 @@ for i in $(notmuch search --output=files tag:spam AND NOT folder:$MAIL_ACCOUNT/S
 done
 
 # Move all unarchived messages from Archive to Inbox folder
-echo Moving $(notmuch count --output=files "folder:$MAIL_ACCOUNT/Archive AND tag:inbox") \
+echo Moving $(notmuch count --output=files "folder:$MAIL_ACCOUNT/Archive AND tag:inbox OR tag:todo") \
      archived messages from Archive to Inbox folder
-for i in $(notmuch search --output=files "folder:$MAIL_ACCOUNT/Archive AND tag:inbox"); do
+for i in $(notmuch search --output=files "folder:$MAIL_ACCOUNT/Archive AND tag:inbox OR tag:todo"); do
     s=${i##*/}; s=${s%%,*}; echo "$i -> $MAILDIR/Inbox/cur/$s"
     safeMove $i "$MAILDIR/Inbox/cur"
 done
 
 # Move all archived messages from Inbox to Archive folder
-echo Moving $(notmuch count --output=files "folder:$MAIL_ACCOUNT/Inbox AND (NOT tag:inbox OR tag:archived)") \
+echo Moving $(notmuch count --output=files "folder:$MAIL_ACCOUNT/Inbox AND (NOT tag:inbox AND NOT tag:todo OR tag:archived)") \
      archived messages from Inbox to Archive folder
-for i in $(notmuch search --output=files "folder:$MAIL_ACCOUNT/Inbox AND (NOT tag:inbox OR tag:archived)"); do
+for i in $(notmuch search --output=files "folder:$MAIL_ACCOUNT/Inbox AND (NOT tag:inbox AND NOT tag:todo OR tag:archived)"); do
     safeMove $i "$MAILDIR/Archive/cur"
 done
 
 notmuch new --no-hooks
-notmuch tag -archived +inbox folder:$MAIL_ACCOUNT/Inbox
+notmuch tag -archived +inbox folder:$MAIL_ACCOUNT/Inbox AND NOT tag:todo
+notmuch tag -archived folder:$MAIL_ACCOUNT/Inbox AND tag:todo
 notmuch tag +archived -inbox -unread folder:$MAIL_ACCOUNT/Archive
 
 if [ "$poll" = true ]; then
