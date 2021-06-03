@@ -26,7 +26,7 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    config = {
+    settings = {
       General = {
         Enable = "Source,Sink,Media,Socket";
       };
@@ -50,7 +50,9 @@
   # Enable touchpad support.
   services.xserver.libinput = {
     enable = true;
-    naturalScrolling = true;
-    additionalOptions = ''MatchIsTouchpad "on"'';
+    touchpad = {
+      naturalScrolling = true;
+      additionalOptions = ''MatchIsTouchpad "on"'';
+    };
   };
 }
