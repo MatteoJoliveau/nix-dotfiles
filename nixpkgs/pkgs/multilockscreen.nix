@@ -1,7 +1,7 @@
 { stdenv, fetchFromGitHub, makeWrapper, pkgs, lib }:
 let
   name = "multilockscreen";
-  version = "v1.2.0";
+  version = "v1.1.0";
 in
 stdenv.mkDerivation {
   name = "${name}";
@@ -9,7 +9,7 @@ stdenv.mkDerivation {
     owner = "jeffmhubbard";
     repo = "${name}";
     rev = "${version}";
-    sha256 = "1bfpbazvhaz9x356nsghz0czysh9b75g79cd9s35v0x0rrzdr9qj";
+    sha256 = "1vdai1ymkzlkh5l69s8zpyj2klzm8zyak00vd4p7lcldxfj861ig";
   };
   nativeBuildInputs = [ makeWrapper ];
   installPhase = ''
