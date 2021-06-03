@@ -57,7 +57,7 @@
     font =
       {
         package = pkgs.roboto;
-        name = "Roboto 11";
+        name = "Roboto 14";
       };
     gtk3.extraConfig = {
       gtk-cursor-theme-name = "breeze";
