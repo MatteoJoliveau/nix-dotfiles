@@ -1,14 +1,14 @@
-{ stdenv, fetchurl, pkgs }:
+{ stdenv, fetchurl, pkgs, lib }:
 let
   name = "boundary";
-  version = "0.1.0";
+  version = "0.2.3";
 in
 stdenv.mkDerivation {
   name = "${name}";
 
   src = fetchurl {
     url = "https://releases.hashicorp.com/${name}/${version}/${name}_${version}_linux_amd64.zip";
-    sha256 = "75eea11381848cf8583932b8bed948801471a2230d256ed3ebd1c63999e1903d";
+    sha256 = "02is56vgbvzrljpk45qlgmz4scg3a9hjppfxchzjlghy27hdrgjr";
   };
 
   buildInputs = [ pkgs.unzip ];
@@ -29,9 +29,9 @@ stdenv.mkDerivation {
     '';
     homepage = "https://boundaryproject.io";
     license = "MPL-2.0";
-    platforms = with stdenv.lib.platforms; linux;
+    platforms = with lib.platforms; linux;
     maintainers = [
-      stdenv.lib.maintainers.matteojoliveau
+      lib.maintainers.matteojoliveau
     ];
   };
 }

@@ -16,9 +16,8 @@
     glib
     tdesktop
     bitwarden
-    pkgs.unstable.bitwarden-cli
     spotify
-    unstable.yubioath-desktop
+    yubioath-desktop
     ark
     xfce.thunar
     xfce.thunar-volman
@@ -31,8 +30,7 @@
     deluge
     audacity
     multimc
-    unstable.obs-studio
-    scribus
+    obs-studio
     pavucontrol
     paprefs
     vlc

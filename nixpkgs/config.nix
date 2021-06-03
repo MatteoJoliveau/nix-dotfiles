@@ -9,10 +9,19 @@
     };
 
     multilockscreen = callPackage pkgs/multilockscreen.nix { };
-    bitwarden-rofi = callPackage pkgs/bitwarden-rofi.nix { };
     boundary = callPackage pkgs/boundary.nix { };
-    svcat = callPackage pkgs/svcat.nix { };
     krew = callPackage pkgs/krew.nix { };
     email-sync = callPackage pkgs/email-sync.nix { };
+    rofi-rbw = callPackage pkgs/rofi-rbw.nix { 
+      pypkgs = python39Packages;
+    };
+    rofimoji = callPackage pkgs/rofimoji.nix { 
+      pypkgs = python39Packages;
+    };
   };
+
+  # Look, I don't like this either, but they are slow to fix those CVEs
+  permittedInsecurePackages = [
+    "libsixel-1.8.6"
+  ];
 }

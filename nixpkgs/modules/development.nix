@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  nodejs = pkgs.unstable.nodejs-14_x;
+  nodejs = pkgs.nodejs-14_x;
   yarn = pkgs.yarn;
   clang = pkgs.clang_10;
 in
@@ -23,19 +23,18 @@ in
     kustomize
     krew
     minikube
-    unstable.kind
+    kind
     asciinema
     jq
     yq
     ruby_2_7
-    unstable.terraform_0_13
+    terraform_0_15
     adoptopenjdk-bin
     zola
-    svcat
     lazygit
     git-town
     argocd
-    unstable.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
   ];
 
   programs.vscode.enable = true;

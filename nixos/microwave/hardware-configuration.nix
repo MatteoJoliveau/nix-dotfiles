@@ -6,7 +6,7 @@
 {
   imports =
     [
-      (modulesPath + "/installer/scan/not-detected.nix")
+      <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
     ];
 
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];

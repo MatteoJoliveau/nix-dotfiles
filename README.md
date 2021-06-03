@@ -58,7 +58,7 @@ Running `nixos-rebuild switch` will update the system with the defined configura
 First, install `home-manager`. More updated information can be found on [the official repo](https://github.com/nix-community/home-manager/#installation), but a quick cheatsheet is provided below.
 
 ```bash
-# $RELEASE matches the desired channel. For example use `master` for the main branch or `release-20.09` for the stable release.
+# $RELEASE matches the desired channel. For example use `master` for the main branch or `release-21.05` for the stable release.
 nix-channel --add https://github.com/nix-community/home-manager/archive/$RELEASE.tar.gz home-manager
 nix-channel --update
 
@@ -142,23 +142,6 @@ Emails are polled every minute via a SystemD Timer called `mbsync.timer` which p
 including moving archived emails to the `Archive` directory so that they are archived on Fastmail too, reindexing `notmuch` and applying `afew` rules.
 
 `mbsync` logs can be accessed by running `journalctl --user -u mbsync.service`
-
-## Gotchas
-
-### Bitwarden Rofi (bwmenu)
-
-`bwmenu` needs some changes to the key configuration in order to work. These changes are configured in the fixup stage of the [derivation](./nixpkgs/pkgs/bitwarden-rofi.nix#L22), but it's a bit finicky. In case of errors like these:
-
-```
-keyctl_set_timeout: Permission denied
-keyctl_read_alloc: Permission denied
-```
-
-Simply run the following command. It only needs to be run once.
-
-```bash
-nix-shell -p keyutils --run "keyctl link @u @s"
-```
 
 ## Contributing
 

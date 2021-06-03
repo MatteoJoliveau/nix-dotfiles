@@ -1,5 +1,6 @@
 configuration {
-    modi: "combi,drun,clipboard:greenclip print";
+/*	modi: "combi,drun,clipboard:greenclip print";*/
+	modi: "combi,drun";
     theme: "onedark";
 	icon-theme: "Papirus-Dark";
 	show-icons: true;

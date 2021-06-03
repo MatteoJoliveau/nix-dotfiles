@@ -1,4 +1,4 @@
-{ stdenv, makeWrapper, pkgs }:
+{ stdenv, makeWrapper, pkgs, lib }:
 let
   name = "email-sync";
   version = "0.1.0";
@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   installPhase = with pkgs; ''
     mkdir -p $out/bin
     install -Dm 755 ./email-sync.sh $out/bin/${name}
-    wrapProgram $out/bin/${name} --prefix PATH ":" ${stdenv.lib.makeBinPath [ bash isync notmuch astroid coreutils libnotify afew procps ]}
+    wrapProgram $out/bin/${name} --prefix PATH ":" ${lib.makeBinPath [ bash isync notmuch astroid coreutils libnotify afew procps ]}
   '';
 
   meta = {
@@ -20,9 +20,9 @@ stdenv.mkDerivation {
     '';
     homepage = "https://github.com/matteojoliveau/${name}";
     license = "MIT";
-    platforms = with stdenv.lib.platforms; linux;
+    platforms = with lib.platforms; linux;
     maintainers = [
-      stdenv.lib.maintainers.matteojoliveau
+      lib.maintainers.matteojoliveau
     ];
   };
 }

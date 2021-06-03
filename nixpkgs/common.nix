@@ -21,11 +21,11 @@ in
 
   home.username = username;
   home.homeDirectory = homedir;
-  home.stateVersion = "20.09";
+  home.stateVersion = "21.03";
 
   programs.home-manager = {
     enable = true;
-    path = "https://github.com/nix-community/home-manager/archive/release-20.09.tar.gz";
+    path = "https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz";
   };
 
   manual.manpages.enable = false;

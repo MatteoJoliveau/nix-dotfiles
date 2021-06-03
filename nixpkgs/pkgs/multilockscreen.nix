@@ -1,7 +1,7 @@
-{ stdenv, fetchFromGitHub, makeWrapper, pkgs }:
+{ stdenv, fetchFromGitHub, makeWrapper, pkgs, lib }:
 let
   name = "multilockscreen";
-  version = "v1.0.0";
+  version = "v1.2.0";
 in
 stdenv.mkDerivation {
   name = "${name}";
@@ -9,14 +9,14 @@ stdenv.mkDerivation {
     owner = "jeffmhubbard";
     repo = "${name}";
     rev = "${version}";
-    sha256 = "0gmnrq7ibbhiwsn7mfi2r71fwm6nvhiwf4wsyz44cscm474z83p0";
+    sha256 = "1bfpbazvhaz9x356nsghz0czysh9b75g79cd9s35v0x0rrzdr9qj";
   };
   nativeBuildInputs = [ makeWrapper ];
   installPhase = ''
     mkdir -p $out/bin
     substitute ${name} ${name}.patched --replace i3lock i3lock-color
     install -Dm 755 ${name}.patched $out/bin/${name}
-    wrapProgram $out/bin/${name} --prefix PATH ":" ${stdenv.lib.makeBinPath [ pkgs.unstable.i3lock-color pkgs.imagemagick pkgs.xorg.xdpyinfo pkgs.bc ]}
+    wrapProgram $out/bin/${name} --prefix PATH ":" ${lib.makeBinPath [ pkgs.i3lock-color pkgs.imagemagick pkgs.xorg.xdpyinfo pkgs.bc ]}
   '';
 
   meta = {
@@ -26,9 +26,9 @@ stdenv.mkDerivation {
     '';
     homepage = "https://github.com/jeffmhubbard/${name}";
     license = "MIT";
-    platforms = with stdenv.lib.platforms; linux;
+    platforms = with lib.platforms; linux;
     maintainers = [
-      stdenv.lib.maintainers.jeffmhubbard
+      lib.maintainers.jeffmhubbard
     ];
   };
 }

@@ -45,11 +45,6 @@
   # Use the Intel drivers
   services.xserver.videoDrivers = [ "intel" ];
 
-  services.fprintd = {
-    enable = true;
-    package = (pkgs.callPackage ./fprint/fprintd.nix { });
-  };
-
   services.autorandr.enable = true;
 
   # Enable touchpad support.

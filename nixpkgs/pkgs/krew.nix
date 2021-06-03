@@ -2,16 +2,16 @@
 
 buildGoModule rec {
   pname = "krew";
-  version = "0.4.0";
+  version = "0.4.1";
 
   src = fetchFromGitHub {
     owner = "kubernetes-sigs";
     repo = pname;
     rev = "v${version}";
-    sha256 = "1fcbpipnbms096c36b2z06ysfwyjj22lm1zd1r5xlv5gp24qimlv";
+    sha256 = "1pwnkg7qsyixj2h8rrdcwyvsqpdvc7q1jd8d62jwbrp3ga8h337r";
   };
 
-  vendorSha256 = "1bmsjv5snrabd9h9szkpcl15rwxm54jgm361ghhy234d2s45c3gn";
+  vendorSha256 = "08dfk33ich3bn4rqz545b50i8dp6l5wqpirvx1yafqjx9rlidng3";
 
   subPackages = [ "cmd/krew" ];
 
@@ -23,7 +23,7 @@ buildGoModule rec {
     homepage = "https://krew.sigs.k8s.io";
     license = licenses.asl20;
     maintainers = [
-      stdenv.lib.maintainers.matteojoliveau
+      lib.maintainers.matteojoliveau
     ];
   };
 }

@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     feh
     rofi
-    rofi-emoji
+    rofimoji
     xss-lock
     ranger
     dconf
@@ -16,7 +16,8 @@
     flameshot
     xclip
     multilockscreen
-    bitwarden-rofi
+    rbw
+    rofi-rbw
     dunst
     libnotify
     arandr
@@ -52,5 +53,11 @@
     "picom/picom.conf".source = ../configs/picom.conf;
     "rofi/config.rasi".source = ../configs/rofi/config.rasi;
     "rofi/onedark.rasi".source = ../configs/rofi/onedark.rasi;
+    "rbw/config.json".text = ''
+    {
+      "email": "matteojoliveau@gmail.com",
+      "pinentry": "${pkgs.pinentry-gtk2}/bin/pinentry-gtk-2"
+    }
+    '';
   };
 }

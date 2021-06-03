@@ -2,8 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    unstable.starship
-    git-town
+    starship
   ];
 
   programs.fish = {
@@ -16,8 +15,8 @@
       kns = "kubens";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       g = "git";
-      gt = "git town";
       ls = "exa";
+      grep = "rg";
       lg = "lazygit";
       rng = "ranger";
       cp = "cp -a --reflink=auto";
@@ -30,12 +29,9 @@
       cat = "bat";
       cal = "cal -m";
       reset_bg = "eval (~/.fehbg)";
-      kwskadmin = "kubectl exec -it openwhisk-wskadmin -n openwhisk -- wskadmin";
       "code." = "code .";
-      # sudo = "doas";
       hm = "home-manager";
-      tree = "ls -T";
-      finlogin = "kubelogin -n finleap-dev --username matteo.joliveau --password (bw get password 'Finleap LDAP'); and sed \"s@fcloud/dev-ca.pem@$HOME/.kube/fcloud/dev-ca.pem@g\" ~/.kube/config -i";
+      tree = "exa -T";
       ecrlogin = "eval (aws ecr get-login --no-include-email)";
     };
 
@@ -43,7 +39,6 @@
 
     shellInit = ''
       eval (direnv hook fish)
-      eval (git town completions fish)
       set -gx PATH $PATH $HOME/.krew/bin
     '';
 
@@ -53,14 +48,23 @@
         src = pkgs.fetchFromGitHub {
           owner = "oh-my-fish";
           repo = "theme-bobthefish";
-          rev = "df1333899d5562c7a4e419e3bfc650aa5d2fd103";
-          sha256 = "1nyh85ji75j3a23czbaaf9s66dpfhfd9in5b6s5baispi2qfwdh2";
+          rev = "626bd39b002535d69e56adba5b58a1060cfb6d7b";
+          sha256 = "06whihwk7cpyi3bxvvh3qqbd5560rknm88psrajvj7308slf0jfd";
         };
       }
     ];
 
     functions = {
       be = "bundle exec $argv";
+      finlogin = ''
+        set env "dev"
+        if contains -- --prod $argv 
+          set env "prod"
+        end
+        
+        kubelogin -n finleap-$env --username matteo.joliveau $argv --password (rbw get 'Finleap LDAP')
+        sed "s@fcloud/$env-ca.pem@$HOME/.kube/fcloud/$env-ca.pem@g" ~/.kube/config -i
+      '';
       cdso = ''
         set software_path ~/Software
         if count $argv > /dev/null

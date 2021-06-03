@@ -67,7 +67,6 @@
     neofetch
     git
     xorg.xmodmap
-    haskellPackages.greenclip
     docker-compose
     noto-fonts
     noto-fonts-cjk
@@ -79,8 +78,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Look, I don't like this either, but they are slow to fix those CVEs
+  nixpkgs.config.permittedInsecurePackages = [
+    "libsixel-1.8.6"
+  ];
+
   # Enable Greenclip for clipboard history
-  services.greenclip.enable = true;
+  services.greenclip.enable = false; # TODO: enable when fixed upstream
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -129,7 +133,7 @@
   location.provider = "geoclue2";
 
   security.pam.services.lightdm.enableGnomeKeyring = true;
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   # Enable Docker
   virtualisation.docker.enable = true;
@@ -165,5 +169,5 @@
   xdg.portal.enable = true;
   services.flatpak.enable = true;
 
-  system.stateVersion = "20.09";
+  system.stateVersion = "21.05";
 }

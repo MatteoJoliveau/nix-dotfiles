@@ -46,7 +46,7 @@ mySelectScreenshot = "select-screenshot"
 myScreenshot = "screenshot"
 
 -- The command to lookup an emoji
-myEmoji = "rofi -show emoji"
+myEmoji = "rofimoji"
 
 -- The command to use as a launcher, to launch applications that don't have
 -- preset keybindings.
@@ -56,7 +56,7 @@ myAppLauncher = "rofi -show drun"
 myCombiLauncher = "rofi -show combi"
 
 -- Password manager command
-myPasswordManager = "bwmenu"
+myPasswordManager = "rofi-rbw --typer xdotool --clipboarder xclip"
 
 -- Clipboard manager command
 myClipboardManager = "rofi -show clipboard"
@@ -203,7 +203,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Spawn the emoji selector using command specified by myEmoji.
   , ((modMask .|. controlMask, xK_d),
-     spawn myEmoji)
+      spawn myEmoji)
 
   -- Spawn NetworkManager Dmenu
   , ((modMask, xK_F2),
