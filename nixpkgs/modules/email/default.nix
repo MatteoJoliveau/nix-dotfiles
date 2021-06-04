@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     email-sync
+    urlscan
   ];
 
   # TODO: cal and card sync with vdirsync (https://github.com/kzar/davemail/blob/main/.vdirsyncerrc)
@@ -77,9 +78,11 @@
         };
         thread = {
             B = "call hooks.open_in_browser(ui)";
+            O = "pipeto urlscan -- --run xdg-open";
         };
         envelope = {
             B = "call hooks.open_in_browser(ui)";
+            O = "pipeto urlscan -- --run xdg-open";
         };
       };
       hooks = builtins.readFile ./alot_hooks.py;
@@ -98,4 +101,6 @@
       text/html;  w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
     '';
   };
+
+  xdg.configFile."urlscan/config.json".source = ./urlscan.json;
 }
