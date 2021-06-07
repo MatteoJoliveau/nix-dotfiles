@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     feh
     libsecret
-    mailspring
     firefox
     w3m
     dante

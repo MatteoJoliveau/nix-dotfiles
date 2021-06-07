@@ -25,7 +25,7 @@ Discord &
 slack &
 
 # Start email client
-alacritty -e alot &
+alacritty -t Emails -e alot &
 
 # Start bluetooth connections
 connect-known-bt & > /dev/null
