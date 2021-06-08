@@ -84,25 +84,25 @@ myWorkspaces = ["1:chats","2:web","3:code","4:terminals","5:games","6:media"] ++
 -- and click on the client you're interested in.
 --
 -- To match on the WM_NAME, you can use 'title' in the same way that
--- 'className' and 'resource' are used below.
+-- 'className' and 'appName' are used below.
 --
 myManageHook = composeAll
     [ className =? "TelegramDesktop"         --> doShift "1:chats"
     , className =? "Slack"                   --> doShift "1:chats"
     , className =? "Discord"                 --> doShift "1:chats"
     , className =? "discord"                 --> doShift "1:chats"
-    , className =? "Mailspring"              --> doShift "1:chats"
+    , title     =? "Emails"                    --> doShift "1:chats"
     , className =? "Navigator"               --> doShift "2:web"
     , className =? "Firefox"                 --> doShift "2:web"
     , className =? "Google-chrome"           --> doShift "2:web"
     , className =? "firefoxdeveloperedition" --> doShift "2:web"
     , className =? "jetbrains-idea"          --> doShift "3:code"
     , className =? "spotify"                 --> doShift "4:media"
-    , resource  =? "desktop_window"          --> doIgnore
+    , appName   =? "desktop_window"          --> doIgnore
     , className =? "Galculator"              --> doFloat
     , className =? "Steam"                   --> doFloat
     , className =? "Gimp"                    --> doFloat
-    , resource  =? "gpicview"                --> doFloat
+    , appName   =? "gpicview"                --> doFloat
     , className =? "MPlayer"                 --> doFloat
     , className =? "stalonetray"             --> doIgnore
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]

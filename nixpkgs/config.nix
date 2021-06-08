@@ -12,10 +12,10 @@
     boundary = callPackage pkgs/boundary.nix { };
     krew = callPackage pkgs/krew.nix { };
     email-sync = callPackage pkgs/email-sync.nix { };
-    rofi-rbw = callPackage pkgs/rofi-rbw.nix { 
+    rofi-rbw = callPackage pkgs/rofi-rbw.nix {
       pypkgs = python39Packages;
     };
-    rofimoji = callPackage pkgs/rofimoji.nix { 
+    rofimoji = callPackage pkgs/rofimoji.nix {
       pypkgs = python39Packages;
     };
   };

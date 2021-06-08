@@ -20,6 +20,11 @@ in
   # Drawing tablet support
   boot.extraModulePackages = with config.boot.kernelPackages; [ digimend ];
   environment.etc."X11/xorg.conf.d/50-huion.conf".source = ./50-huion.conf;
+  boot.postBootCommands = ''
+    primary_out=$(xrandr --current | grep primary | awk '{ print $1 }')
+    pen_id=$(xinput list | grep Pen | grep -oP 'id=(\d*)' | awk -F = '{ print $2 }')
+    xinput map-to-output "$pen_id" $primary_out || true
+  '';
 
 
   # Networking

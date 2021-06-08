@@ -65,6 +65,7 @@
     wget
     vim
     neofetch
+    cpufetch
     git
     xorg.xmodmap
     docker-compose

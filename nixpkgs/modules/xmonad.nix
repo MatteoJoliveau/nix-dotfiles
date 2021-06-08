@@ -54,10 +54,10 @@
     "rofi/config.rasi".source = ../configs/rofi/config.rasi;
     "rofi/onedark.rasi".source = ../configs/rofi/onedark.rasi;
     "rbw/config.json".text = ''
-    {
-      "email": "matteojoliveau@gmail.com",
-      "pinentry": "${pkgs.pinentry-gtk2}/bin/pinentry-gtk-2"
-    }
+      {
+        "email": "matteojoliveau@gmail.com",
+        "pinentry": "${pkgs.pinentry-gtk2}/bin/pinentry-gtk-2"
+      }
     '';
   };
 }
