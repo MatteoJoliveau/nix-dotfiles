@@ -31,12 +31,12 @@
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/9E3E-E93D";
+      device = "/dev/disk/by-label/EFI";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/297bf0de-45fb-42f5-92bc-687181b29f02"; }];
+    [{ device = "/dev/disk/by-label/swap"; }];
 
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
