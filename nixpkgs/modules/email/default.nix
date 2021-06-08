@@ -71,18 +71,18 @@
       enable = true;
       bindings = {
         global = {
-            T = "search tag:todo";
+          T = "search tag:todo";
         };
         search = {
-            t = "toggletags todo";
+          t = "toggletags todo";
         };
         thread = {
-            B = "call hooks.open_in_browser(ui)";
-            O = "pipeto urlscan -- --run xdg-open";
+          B = "call hooks.open_in_browser(ui)";
+          O = "pipeto urlscan -- --run xdg-open";
         };
         envelope = {
-            B = "call hooks.open_in_browser(ui)";
-            O = "pipeto urlscan -- --run xdg-open";
+          B = "call hooks.open_in_browser(ui)";
+          O = "pipeto urlscan -- --run xdg-open";
         };
       };
       hooks = builtins.readFile ./alot_hooks.py;
@@ -99,6 +99,9 @@
   home.file = {
     ".mailcap".text = ''
       text/html;  w3m -dump -o document_charset=%{charset} '%s'; nametemplate=%s.html; copiousoutput
+      application/pdf; xdg-open %s
+      text/pdf; xdg-open %s
+      image/pdf; xdg-open %s
     '';
   };
 
