@@ -85,7 +85,7 @@
   ];
 
   # Enable Greenclip for clipboard history
-  services.greenclip.enable = false; # TODO: enable when fixed upstream
+  services.greenclip.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
