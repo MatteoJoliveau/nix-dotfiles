@@ -35,6 +35,7 @@
     vlc
     desktop-file-utils
     scribusUnstable
+    wonderdraft
   ];
 
   home.file.".face".source = ../images/propic.jpg;
