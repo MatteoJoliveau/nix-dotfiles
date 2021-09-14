@@ -23,5 +23,6 @@
   # Look, I don't like this either, but they are slow to fix those CVEs
   permittedInsecurePackages = [
     "libsixel-1.8.6"
+    "python2.7-Pillow-6.2.2"
   ];
 }
