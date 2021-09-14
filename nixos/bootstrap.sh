@@ -1,18 +1,29 @@
 #! /usr/bin/env bash
 
-dst="/etc/nixos"
+default_dst="/etc/nixos"
+default_hostname="$( hostname )"
 
 usage() {
-    echo "Usage: bootstrap.sh [flags] [TARGETDIR]"
+    local dst="$1"
+    local hostname="$2"
+    echo "Usage: bootstrap.sh [flags] [TARGETDIR] [HOSTNAME]"
     echo ""
     echo "Copies the initial NixOS configuration for this machine into the target directory (defaults to $dst). Should only be run once and then switch to install.sh, but overrall safe to be run multiple times."
     echo ""
+    echo "Arguments"
+    echo "  TARGETDIR     directory where the configuration will be installed. Optional, defaults to $dst"
+    echo "  HOSTNAME      installed system hostname. Optional, defaults to '$( hostname )'"
+    echo ""
+    echo "Options"
     echo "    --dry-run   prints the commands it would run without actually executing them"
     echo "  -h, --help    prints this message and exits"
     exit 1
 }
 
 run() {
+    local dst="$1"
+    local hostname="$2"
+
     if [ "$EUID" -ne 0 ]; then
         echo "Please run this script as root"
         exit 1
@@ -23,7 +34,6 @@ run() {
         echo ""
     fi
 
-    hostname="$( hostname )"
     here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
     if [ ! -d "$here/$hostname" ]; then
@@ -33,6 +43,10 @@ run() {
       ls -d $here/*/ | xargs -I '{}' basename '{}'
       exit 1
     fi
+
+    echo "Adding nixos-hardware channel"
+    $DRY_RUN_CMD nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
+    $DRY_RUN_CMD nix-channel --update
 
     echo "Installing NixOS configuration"
 
@@ -57,17 +71,25 @@ run() {
 
     echo "Done"
     echo ""
-    echo "Now you can run nixos-rebuild switch to activate the system configuration"
+    echo "Now you can run nixos-install to complete the installation process"
 
 }
 
 for arg in "$@"; do
   shift
   case "$arg" in
-    "-h"|"--help") usage ;;
+    "-h" | "--help") usage "$default_dst" "$default_hostname" ;;
     "--dry-run") DRY_RUN_CMD="echo" ;;
-    *) dst="$arg"
+    *) if [ -z "$dst" ]; then dst="$arg"; else hostname="$arg"; fi
   esac
 done
 
-run
+if [ -z "$dst" ]; then
+  dst="$default_dst"
+fi
+
+if [ -z "$hostname" ]; then
+  hostname="$default_hostname"
+fi
+
+run "$dst" "$hostname"

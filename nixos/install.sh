@@ -34,6 +34,10 @@ run() {
       exit 1
     fi
 
+    echo "Adding nixos-hardware channel"
+    $DRY_RUN_CMD nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
+    $DRY_RUN_CMD nix-channel --update
+
     echo "Installing NixOS configuration"
 
     echo "Removing $dst for clean symlink"

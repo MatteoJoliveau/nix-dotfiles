@@ -24,8 +24,12 @@ git clone https://github.com/matteojoliveau/nix-dotfiles.git /tmp/nix-dotfiles
 At this point, instead of manually editing the `configuration.nix` file as it shows, run the `bootstrap.sh` script that can be found in the [nixos](./nixos/bootstrap.sh) directory of this repository. This will copy the appropriate files into the config folder.
 
 ```bash
-/tmp/nixos/bootstrap.sh /mnt/etc/nixos
+/tmp/nixos/bootstrap.sh /mnt/etc/nixos my-hostname
 ```
+
+`my-hostname` should match one of the available configuration directory inside [nixos](nixos). Beware that it defaults to the current system's
+hostname, which is usually `nixos` in the live installation environment, and it is not a valid hostname for this script as no directory with that
+name exists.
 
 If you wish to use the generated `hardware-configuration.nix` file instead of the one provided in this repo, copy it to the target folder.
 
