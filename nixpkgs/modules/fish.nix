@@ -25,7 +25,6 @@
       clip = "xclip -sel clip";
       nethack = "telnet nethack.alt.org";
       ed = "emacs -nw";
-      find = "fd";
       cat = "bat";
       cal = "cal -m";
       reset_bg = "eval (~/.fehbg)";

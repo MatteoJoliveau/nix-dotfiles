@@ -34,6 +34,7 @@
     paprefs
     vlc
     desktop-file-utils
+    scribusUnstable
   ];
 
   home.file.".face".source = ../images/propic.jpg;

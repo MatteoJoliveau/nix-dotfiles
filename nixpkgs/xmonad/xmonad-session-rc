@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Configure PATH so that we can access our scripts below
-export PATH=$PATH:~/.cabal/bin:~/.xmonad/bin:~/.local/bin
+export PATH=$PATH:~/.cabal/bin:~/.xmonad/bin:~/.local/bin:~/.cargo/bin
 
 # Configure X
 xsetroot -cursor_name left_ptr &

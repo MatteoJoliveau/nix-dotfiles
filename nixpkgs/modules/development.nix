@@ -15,7 +15,6 @@ in
     httpie
     insomnia
     awscli
-    boundary
     kubectl
     k9s
     kubectx
