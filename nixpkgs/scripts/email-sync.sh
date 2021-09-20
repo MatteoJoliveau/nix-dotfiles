@@ -40,9 +40,10 @@ if [ "$unread" = 1 ]; then
     email="email"
 fi
 
-if [ "$unread" -gt 0 ]; then
-  notify-send "You have $unread new $email" --category=email.arrived
-fi
+# Uncomment to enable email notifications
+# if [ "$unread" -gt 0 ]; then
+#   notify-send "You have $unread new $email" --category=email.arrived
+# fi
 
 echo You have "$unread" new "$email"
 
