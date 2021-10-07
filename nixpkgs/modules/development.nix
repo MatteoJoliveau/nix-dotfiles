@@ -34,6 +34,7 @@ in
     git-town
     argocd
     jetbrains.idea-ultimate
+    doctl
   ];
 
   programs.vscode.enable = true;

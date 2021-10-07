@@ -11,7 +11,6 @@
     teams
     discord
     zoom-us
-    gvfs
     glib
     tdesktop
     bitwarden
@@ -36,6 +35,8 @@
     desktop-file-utils
     scribusUnstable
     wonderdraft
+    dungeondraft
+    krita
   ];
 
   home.file.".face".source = ../images/propic.jpg;
