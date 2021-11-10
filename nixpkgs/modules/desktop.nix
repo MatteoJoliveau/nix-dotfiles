@@ -35,7 +35,7 @@
     vlc
     desktop-file-utils
     scribusUnstable
-    wonderdraft
+    caffeine-ng
   ];
 
   home.file.".face".source = ../images/propic.jpg;
@@ -76,9 +76,9 @@
     };
   };
 
+  services.caffeine.enable = true;
+
   home.activation = {
-
-
     installNssDbCerts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       crt="/etc/nixos/codexlab-ca.crt"
       if [ -f "$crt" ]; then

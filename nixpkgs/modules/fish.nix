@@ -11,8 +11,8 @@
       hk = "heroku";
       tf = "terraform";
       k = "kubectl";
-      ktx = "kubectx";
-      kns = "kubens";
+      ktx = "kubie ctx";
+      kns = "kubie ns";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       g = "git";
       ls = "exa";
@@ -32,6 +32,7 @@
       hm = "home-manager";
       tree = "exa -T";
       ecrlogin = "eval (aws ecr get-login --no-include-email)";
+      sb = "sonobuoy";
     };
 
     promptInit = "eval (starship init fish)";
@@ -117,5 +118,12 @@
           git merge --ff-only $source
       '';
     };
+  };
+   xdg.configFile = {
+     "starship.toml".source = ../configs/starship.toml;
+   };
+
+  home.file = {
+    ".kube/kubie.yaml".source = ../configs/kubie.yaml;
   };
 }

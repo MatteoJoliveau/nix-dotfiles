@@ -1,0 +1,4 @@
+shell: fish
+
+prompt:
+  disable: true
