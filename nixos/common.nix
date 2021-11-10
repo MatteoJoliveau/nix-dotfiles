@@ -180,6 +180,9 @@
   # Accounts Service
   services.accounts-daemon.enable = true;
 
+  # Thumbnail Service
+  services.tumbler.enable = true;
+
   # User accounts
   programs.fish.enable = true;
   users.users.matteo = {
@@ -190,6 +193,8 @@
 
   xdg.portal.enable = true;
   services.flatpak.enable = true;
+
+  services.gvfs.enable = true;
 
   system.stateVersion = "21.05";
 }

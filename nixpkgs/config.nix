@@ -18,6 +18,8 @@
     rofimoji = callPackage pkgs/rofimoji.nix {
       pypkgs = python39Packages;
     };
+    wonderdraft = callPackage pkgs/wonderdraft {};
+    dungeondraft = callPackage pkgs/dungeondraft {};
   };
 
   # Look, I don't like this either, but they are slow to fix those CVEs
