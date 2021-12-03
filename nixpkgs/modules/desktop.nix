@@ -35,8 +35,6 @@
     desktop-file-utils
     scribusUnstable
     caffeine-ng
-    wonderdraft
-    dungeondraft
     krita
   ];
 

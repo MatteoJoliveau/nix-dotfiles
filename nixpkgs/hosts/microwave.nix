@@ -10,7 +10,11 @@
 
   packageOverrides = pkgs: with pkgs; rec {
     wonderdraft = callPackage pkgs/wonderdraft {};
+    dungeondraft = callPackage pkgs/dungeondraft {};
   };
 
-  home.packages = with pkgs; [wonderdraft];
+  home.packages = with pkgs; [
+    wonderdraft
+    dungeondraft
+  ];
 }
