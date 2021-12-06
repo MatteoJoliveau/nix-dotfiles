@@ -1,6 +1,15 @@
 { config, pkgs, ... }:
 
 {
+  # Automatically optimise the Nix store
+  nix.autoOptimiseStore = true;
+  # Automatically cleanup derivation older than a month each week
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # Networking
   networking.networkmanager.enable = true;
   networking.enableIPv6 = true;
@@ -83,9 +92,6 @@
   nixpkgs.config.permittedInsecurePackages = [
     "libsixel-1.8.6"
   ];
-
-  # Enable Greenclip for clipboard history
-  services.greenclip.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
