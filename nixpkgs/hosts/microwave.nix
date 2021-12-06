@@ -1,16 +1,15 @@
 { pkgs, ... }:
 
+let
+  wonderdraft = pkgs.callPackage ../pkgs/wonderdraft {};
+  dungeondraft = pkgs.callPackage ../pkgs/dungeondraft {};
+in
 {
   home.file = {
     ".screenlayout/default.sh" = {
       source = ./arandr.sh;
       executable = true;
     };
-  };
-
-  packageOverrides = pkgs: with pkgs; rec {
-    wonderdraft = callPackage pkgs/wonderdraft {};
-    dungeondraft = callPackage pkgs/dungeondraft {};
   };
 
   home.packages = with pkgs; [
