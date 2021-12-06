@@ -12,7 +12,7 @@
     discord
     zoom-us
     glib
-    tdesktop
+    unstable.tdesktop
     bitwarden
     spotify
     yubioath-desktop
