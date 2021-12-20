@@ -5,6 +5,7 @@
     feh
     libsecret
     firefox
+    google-chrome
     w3m
     dante
     slack
