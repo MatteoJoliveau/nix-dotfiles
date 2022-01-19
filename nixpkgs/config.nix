@@ -8,7 +8,6 @@
       };
     };
 
-    multilockscreen = callPackage pkgs/multilockscreen.nix { };
     boundary = callPackage pkgs/boundary.nix { };
     krew = callPackage pkgs/krew.nix { };
     email-sync = callPackage pkgs/email-sync.nix { };

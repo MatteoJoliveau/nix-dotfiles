@@ -15,7 +15,7 @@
     pamixer
     flameshot
     xclip
-    multilockscreen
+    betterlockscreen
     rbw
     rofi-rbw
     dunst
@@ -28,7 +28,7 @@
     hooks = {
       postswitch = {
         "change-background" = "~/.fehbg";
-        "generate-lockscreen" = "multilockscreen -u ~/Pictures/wallpaper.png";
+        "generate-lockscreen" = "betterlockscreen -u ~/Pictures/wallpaper.png";
       };
     };
   };
@@ -48,7 +48,7 @@
   };
 
   xdg.configFile = {
-    "multilock/config".source = ../configs/multilockscreen.cfg;
+    "betterlockscreenrc".source = ../configs/betterlockscreen.cfg;
     "dunst/dunstrc".source = ../configs/dunstrc;
     "picom/picom.conf".source = ../configs/picom.conf;
     "rofi/config.rasi".source = ../configs/rofi/config.rasi;

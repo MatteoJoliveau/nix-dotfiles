@@ -225,5 +225,10 @@ in
 
   services.gvfs.enable = true;
 
-  system.stateVersion = "21.05";
+  system = {
+    stateVersion = "21.11";
+    autoUpgrade.enable = true;
+    autoUpgrade.allowReboot = false;
+  };
+
 }
