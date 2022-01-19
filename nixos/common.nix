@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
   # Automatically optimise the Nix store
   nix.autoOptimiseStore = true;
@@ -105,30 +108,50 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    jack.enable = false;
+    jack.enable = true;
 
-    media-session.config.bluez-monitor.rules = [
-      {
-        matches = [{ "device.name" = "~bluez_card.*"; }];
-        actions = {
-          "update-props" = {
-            "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
-            "bluez5.msbc-support" = true;
-            "bluez5.sbc-xq-support" = true;
+    media-session = {
+      enable = true;
+      config.bluez-monitor.rules = [
+        {
+          matches = [{ "device.name" = "~bluez_card.*"; }];
+          actions = {
+            "update-props" = {
+              "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
+              "bluez5.msbc-support" = true;
+              "bluez5.sbc-xq-support" = true;
+            };
           };
-        };
-      }
-      {
-        matches = [
-          { "node.name" = "~bluez_input.*"; }
-          { "node.name" = "~bluez_output.*"; }
-        ];
-        actions = {
-          "node.pause-on-idle" = false;
-        };
-      }
-    ];
+        }
+        {
+          matches = [
+            { "node.name" = "~bluez_input.*"; }
+            { "node.name" = "~bluez_output.*"; }
+          ];
+          actions = {
+            "node.pause-on-idle" = false;
+          };
+        }
+      ];
+    };
+
+    config.pipewire = {
+      "context.properties" = {
+        "link.max-buffers" = 64;
+        # "link.max-buffers" = 16; # version < 3 clients can't handle more than this
+        "log.level" = 2; # https://docs.pipewire.org/page_daemon.html
+        #"default.clock.rate" = 48000;
+        "default.clock.rate" = 44100;
+        #"default.clock.quantum" = 1024;
+        #"default.clock.min-quantum" = 32;
+        #"default.clock.max-quantum" = 8192;
+        "default.clock.quantum"     = 2048;
+        "default.clock.min-quantum" = 2048;
+        "default.clock.max-quantum" = 4096;
+      };
+    };
   };
+  
 
   # For steam
   hardware.opengl.driSupport32Bit = true;
