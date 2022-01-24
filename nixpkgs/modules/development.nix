@@ -36,6 +36,7 @@ in
     argocd
     jetbrains.idea-ultimate
     doctl
+    saml2aws
   ];
 
   programs.vscode.enable = true;
