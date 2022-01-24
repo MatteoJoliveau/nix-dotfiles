@@ -58,7 +58,8 @@ in
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
-  time.timeZone = "Europe/Rome";
+  # time.timeZone = "Europe/Rome";
+  time.timeZone = "Atlantic/Canary";
 
   # OpenDoas
   security.doas = {
