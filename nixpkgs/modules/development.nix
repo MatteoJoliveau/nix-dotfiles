@@ -12,7 +12,7 @@ in
     meson
     cmake
     rustup
-    httpie
+    unstable.httpie
     insomnia
     awscli
     kubectl
