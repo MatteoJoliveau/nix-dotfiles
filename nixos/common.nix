@@ -20,6 +20,8 @@ in
     ''
       127.0.0.1 containers.localhost
       ::1 containers.localhost
+      127.0.0.1 hello.localhost
+      ::1 hello.localhost
     '';
 
   # Configure GRUB 
