@@ -61,6 +61,7 @@ in
     keyMap = "us";
   };
   time.timeZone = "Europe/Rome";
+  # time.timeZone = "Atlantic/Canary";
 
   # OpenDoas
   security.doas = {

@@ -28,7 +28,7 @@ in
     jq
     yq
     ruby_2_7
-    terraform_0_15
+    terraform
     adoptopenjdk-bin
     zola
     lazygit
@@ -36,6 +36,8 @@ in
     argocd
     jetbrains.idea-ultimate
     doctl
+    saml2aws
+    jo
   ];
 
   programs.vscode.enable = true;

@@ -19,6 +19,7 @@
     patchelf
     inetutils
     wireguard
+    vips
   ];
 
   programs.direnv.enable = true;
