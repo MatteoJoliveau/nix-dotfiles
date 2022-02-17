@@ -33,6 +33,10 @@ in
 
   # Networking
   networking.hostName = "microwave"; # Define your hostname
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+  };
 
   # Use NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
