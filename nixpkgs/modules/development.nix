@@ -14,7 +14,7 @@ in
     rustup
     unstable.httpie
     insomnia
-    awscli
+    awscli2
     kubectl
     k9s
     kubectx
