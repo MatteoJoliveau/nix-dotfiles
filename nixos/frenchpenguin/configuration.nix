@@ -15,7 +15,7 @@
 
   # Networking
   networking.hostName = "frenchpenguin"; # Define your hostname
-  networking.interfaces.wlp59s0.useDHCP = true;
+  networking.interfaces.wlp0s20f3.useDHCP = true;
 
   # Additional packages
   environment.systemPackages = with pkgs; [
