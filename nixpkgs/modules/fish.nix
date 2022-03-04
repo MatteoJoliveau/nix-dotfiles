@@ -35,7 +35,7 @@
       sb = "sonobuoy";
     };
 
-    promptInit = "eval (starship init fish)";
+    interactiveShellInit = "eval (starship init fish)";
 
     shellInit = ''
       eval (direnv hook fish)

@@ -7,8 +7,7 @@
       ../common.nix
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <nixos-hardware/common/pc/laptop>
-      <nixos-hardware/common/cpu/intel>
+      <nixos-hardware/dell/xps/15-9500/nvidia>
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -43,7 +42,7 @@
   services.hardware.bolt.enable = true;
 
   # Use the Intel drivers
-  services.xserver.videoDrivers = [ "intel" ];
+  # services.xserver.videoDrivers = [ "intel" ];
 
   services.autorandr.enable = true;
 
