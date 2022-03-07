@@ -7,15 +7,14 @@
       ../common.nix
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <nixos-hardware/common/pc/laptop>
-      <nixos-hardware/common/cpu/intel>
+      <nixos-hardware/dell/xps/15-9500/nvidia>
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Networking
   networking.hostName = "frenchpenguin"; # Define your hostname
-  networking.interfaces.wlp59s0.useDHCP = true;
+  networking.interfaces.wlp0s20f3.useDHCP = true;
 
   # Additional packages
   environment.systemPackages = with pkgs; [
@@ -43,7 +42,7 @@
   services.hardware.bolt.enable = true;
 
   # Use the Intel drivers
-  services.xserver.videoDrivers = [ "intel" ];
+  # services.xserver.videoDrivers = [ "intel" ];
 
   services.autorandr.enable = true;
 
@@ -55,4 +54,9 @@
       additionalOptions = ''MatchIsTouchpad "on"'';
     };
   };
+
+  security.polkit.enable = true;
+  services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = true;
+  security.pam.services.xscreensaver.fprintAuth = true;
 }
