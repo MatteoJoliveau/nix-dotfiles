@@ -50,3 +50,6 @@ nix-shell -p keyutils --run "keyctl link @u @s"
 
 # Start flameshot in background
 flameshot &
+
+# Enable system prompter
+dbus-update-activation-environment --systemd DISPLAY

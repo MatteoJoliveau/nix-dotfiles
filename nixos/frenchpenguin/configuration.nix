@@ -21,6 +21,15 @@
     firehol
   ];
 
+  hardware.opengl = {
+    extraPackages = with pkgs; [
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
+      intel-media-driver
+    ];
+  };
+
   # Enable Bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -35,14 +44,21 @@
   hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
 
   # Power management
-  services.tlp.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 85;
+      STOP_CHARGE_THRESH_BAT0 = 90;
+    };
+  };
   powerManagement.powertop.enable = true;
 
   # Enable Thunderbolt
   services.hardware.bolt.enable = true;
 
-  # Use the Intel drivers
-  # services.xserver.videoDrivers = [ "intel" ];
+  # Please NVIDIA don't drain my battery
+  hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.powerManagement.finegrained = true;
 
   services.autorandr.enable = true;
 
@@ -59,4 +75,5 @@
   services.fprintd.enable = true;
   security.pam.services.login.fprintAuth = true;
   security.pam.services.xscreensaver.fprintAuth = true;
+
 }

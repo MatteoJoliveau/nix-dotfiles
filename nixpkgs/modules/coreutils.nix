@@ -20,6 +20,7 @@
     inetutils
     wireguard
     vips
+    pciutils
   ];
 
   programs.direnv.enable = true;
