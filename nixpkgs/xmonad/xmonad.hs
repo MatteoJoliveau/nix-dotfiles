@@ -27,6 +27,7 @@ import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
+altMask = mod1Mask
 
 ------------------------------------------------------------------------
 -- Terminal
@@ -256,6 +257,22 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Display Brightness Down
   , ((0, xF86XK_MonBrightnessDown),
      spawn "brightnessctl set 10%-")
+
+  -- Dunst close notification
+  , ((controlMask, xK_space),
+      spawn "dunstctl close")
+  
+  -- Dunst close all notifications
+  , ((controlMask .|. shiftMask, xK_space),
+      spawn "dunstctl close-all")
+
+  -- Dunst pop history
+  , ((altMask, xK_grave),
+      spawn "dunstctl history-pop")
+   
+   -- Dunst context menu
+  , ((controlMask .|. shiftMask, xK_period),
+      spawn "dunstctl context")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
