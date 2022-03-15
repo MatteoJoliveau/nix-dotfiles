@@ -38,6 +38,8 @@ in
     doctl
     saml2aws
     jo
+    vpnc
+    remmina
   ];
 
   programs.vscode.enable = true;
