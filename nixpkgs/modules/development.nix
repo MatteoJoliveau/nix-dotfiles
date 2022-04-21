@@ -40,6 +40,7 @@ in
     jo
     vpnc
     remmina
+    velero
   ];
 
   programs.vscode.enable = true;
