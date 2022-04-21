@@ -267,7 +267,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
       spawn "dunstctl close-all")
 
   -- Dunst pop history
-  , ((altMask, xK_grave),
+  , ((controlMask, xK_grave),
       spawn "dunstctl history-pop")
    
    -- Dunst context menu
