@@ -36,11 +36,12 @@ in
     argocd
     jetbrains.idea-ultimate
     doctl
-    saml2aws
+    unstable.saml2aws
     jo
     vpnc
     remmina
     velero
+    google-cloud-sdk
   ];
 
   programs.vscode.enable = true;
