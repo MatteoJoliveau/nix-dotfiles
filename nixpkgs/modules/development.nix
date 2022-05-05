@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  nodejs = pkgs.nodejs-14_x;
+  nodejs = pkgs.nodejs-16_x;
   yarn = pkgs.yarn;
   clang = pkgs.clang_10;
 in
