@@ -51,6 +51,7 @@ in
 
   # Firewall
   networking.firewall = {
+    allowedUDPPorts = [ 51820 ]; # wireguard
     extraCommands = ''
       iptables -A nixos-fw -p tcp --source 192.168.88.0/24 --dport 8123:8123 -j nixos-fw-accept
     '';

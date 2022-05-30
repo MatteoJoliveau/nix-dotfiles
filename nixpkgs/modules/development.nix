@@ -14,12 +14,13 @@ in
     rustup
     unstable.httpie
     insomnia
-    awscli2
+    unstable.awscli2
+    unstable.ssm-session-manager-plugin
     kubectl
     k9s
     kubectx
     kubie
-    kubernetes-helm
+    unstable.kubernetes-helm
     kustomize
     krew
     minikube
@@ -34,7 +35,7 @@ in
     lazygit
     git-town
     argocd
-    jetbrains.idea-ultimate
+    unstable.jetbrains.idea-ultimate
     doctl
     unstable.saml2aws
     jo
