@@ -18,7 +18,7 @@
     file
     patchelf
     inetutils
-    wireguard
+    wireguard-tools
     vips
     pciutils
   ];

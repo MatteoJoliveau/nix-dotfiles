@@ -189,7 +189,7 @@ in
   services.gvfs.enable = true;
 
   system = {
-    stateVersion = "21.11";
+    stateVersion = "22.05";
     autoUpgrade.enable = true;
     autoUpgrade.allowReboot = false;
   };

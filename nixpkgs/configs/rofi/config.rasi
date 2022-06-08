@@ -1,6 +1,5 @@
 configuration {
 	modi: "combi,drun,clipboard:greenclip print";
-    theme: "onedark";
 	icon-theme: "Papirus-Dark";
 	show-icons: true;
 	terminal: "alacritty";
@@ -140,3 +139,5 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
+
+@theme "onedark"

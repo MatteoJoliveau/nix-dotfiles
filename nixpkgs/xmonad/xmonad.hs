@@ -147,7 +147,7 @@ myNormalBorderColor  = black
 myFocusedBorderColor = primaryColor
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
-tabConfig = defaultTheme {
+tabConfig = def {
     activeBorderColor = primaryColor,
     activeTextColor = primaryColor,
     activeColor = black,
@@ -428,7 +428,7 @@ myStartupHook = do
 --
 main = do
   xmproc <- spawnPipe ("xmobar " ++ myXmobarrc)
-  xmonad $ defaults {
+  xmonad $ docks $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
@@ -437,7 +437,6 @@ main = do
       }
       , manageHook = manageDocks <+> myManageHook <+> namedScratchpadManageHook myScratchpads
       , startupHook = myStartupHook
-      , handleEventHook = docksEventHook
   }
 
 
@@ -449,7 +448,7 @@ main = do
 --
 -- No need to modify this.
 --
-defaults = defaultConfig {
+defaults = def {
     -- simple stuff
     terminal           = myTerminal,
     focusFollowsMouse  = myFocusFollowsMouse,

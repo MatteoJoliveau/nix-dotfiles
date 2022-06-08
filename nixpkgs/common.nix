@@ -2,6 +2,7 @@
 let
   username = builtins.getEnv "USER";
   homedir = builtins.getEnv "HOME";
+  version = "22.05";
 in
 {
   imports = [
@@ -24,11 +25,11 @@ in
 
   home.username = username;
   home.homeDirectory = homedir;
-  home.stateVersion = "21.03";
+  home.stateVersion = version;
 
   programs.home-manager = {
     enable = true;
-    path = "https://github.com/nix-community/home-manager/archive/release-21.11.tar.gz";
+    path = "https://github.com/nix-community/home-manager/archive/release-${version}.tar.gz";
   };
   manual.manpages.enable = false;
 }

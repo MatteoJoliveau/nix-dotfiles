@@ -15,7 +15,7 @@
         address = "matteo@matteojoliveau.com";
         userName = "matteo@matteojoliveau.com";
         realName = "Matteo Joliveau";
-        passwordCommand = "${pkgs.gnome3.libsecret}/bin/secret-tool lookup fastmail password";
+        passwordCommand = "${pkgs.libsecret}/bin/secret-tool lookup fastmail password";
 
         gpg = {
           key = "5082F3E1817A0F9ADB54E4EB0E8BD7D975BB89C5";
@@ -93,7 +93,6 @@
     };
   };
 
-  # Enable when Home Manager 21.05 comes out with goimapnotify instead of node-imapnotify
   services.imapnotify.enable = false;
 
   home.file = {

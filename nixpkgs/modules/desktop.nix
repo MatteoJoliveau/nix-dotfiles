@@ -28,13 +28,12 @@
     libreoffice-fresh
     deluge
     audacity
-    multimc
     obs-studio
     pavucontrol
     paprefs
     vlc
     desktop-file-utils
-    scribusUnstable
+    scribus
     caffeine-ng
     krita
   ];
@@ -54,7 +53,7 @@
     };
     theme = {
       name = "Adwaita";
-      package = pkgs.gnome3.gnome_themes_standard;
+      package = pkgs.gnome3.gnome-themes-extra;
     };
     font =
       {

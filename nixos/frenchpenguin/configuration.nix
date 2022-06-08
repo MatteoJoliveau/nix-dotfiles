@@ -41,7 +41,6 @@
     };
   };
   services.blueman.enable = true;
-  hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
 
   # Power management
   services.tlp = {
