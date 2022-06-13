@@ -10,7 +10,7 @@
     dante
     slack
     teams
-    unstable.discord
+    discord
     zoom-us
     glib
     unstable.tdesktop

@@ -63,7 +63,7 @@ stdenv.mkDerivation rec {
     icon = name;
     desktopName = "Dungeondraft";
     genericName = meta.description;
-    categories = "Graphics";
+    categories = ["Graphics"];
     terminal = false;
   };
 
