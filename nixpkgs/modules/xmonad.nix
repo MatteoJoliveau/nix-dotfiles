@@ -59,5 +59,6 @@
         "pinentry": "${pkgs.pinentry-gtk2}/bin/pinentry-gtk-2"
       }
     '';
+    "flameshot/flameshot.ini".source = ../configs/flameshot.ini;
   };
 }
