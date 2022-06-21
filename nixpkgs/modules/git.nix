@@ -28,6 +28,9 @@
     };
     lfs.enable = true;
     extraConfig = {
+      init = {
+        defaultBranch = "main";
+      };
       commit = {
         template = "${homedir}/.config/git/message";
       };
