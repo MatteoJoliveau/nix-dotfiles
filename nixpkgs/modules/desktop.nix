@@ -36,6 +36,7 @@
     scribus
     caffeine-ng
     krita
+    nextcloud-client
   ];
 
   home.file.".face".source = ../images/propic.jpg;
