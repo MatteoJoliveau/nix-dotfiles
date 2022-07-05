@@ -4,13 +4,21 @@ let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in
 {
-  # Automatically optimise the Nix store
-  nix.autoOptimiseStore = true;
-  # Automatically cleanup derivation older than a month each week
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
+  nix = {
+   # Automatically optimise the Nix store
+    autoOptimiseStore = true;
+    # Automatically cleanup derivation older than a month each week
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+
+    # Flakes
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   # Networking
