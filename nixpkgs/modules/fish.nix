@@ -55,6 +55,8 @@
     ];
 
     functions = {
+      awp = "set -x AWS_PROFILE $argv[1]";
+
       be = "bundle exec $argv";
       lat = ''
         if test "$argv"
