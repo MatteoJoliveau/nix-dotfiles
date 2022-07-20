@@ -15,7 +15,7 @@
       kns = "kubie ns";
       isodate = "date -u +'%Y-%m-%dT%H:%M:%SZ'";
       g = "git";
-      ls = "lat";
+      ls = "exa";
       grep = "rg";
       lg = "lazygit";
       rng = "ranger";
@@ -58,20 +58,6 @@
       awp = "set -x AWS_PROFILE $argv[1]";
 
       be = "bundle exec $argv";
-      lat = ''
-        if test "$argv"
-          set dst "$argv"
-        else
-          set dst "."
-        end
-
-        set mime (file --brief --mime-type $dst)
-        if test "$mime" = "inode/directory"
-          exa $dst
-        else
-          bat $dst
-        end
-      '';
       finlogin = ''
         set env "dev"
         if contains -- --prod $argv 
