@@ -9,7 +9,7 @@
       key = "matteojoliveau@gmail.com";
       signByDefault = true;
     };
-    ignores = [ "*.iml" ".idea/" ".vscode" ];
+    ignores = [ "*.iml" ".idea/" ".vscode" ".direnv" ];
     aliases = {
       co = "checkout";
       br = "branch";
