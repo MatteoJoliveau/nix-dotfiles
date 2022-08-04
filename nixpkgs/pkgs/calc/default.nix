@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, pkgs, lib }:
+{ stdenv, pkgs, lib }:
 let
   name = "calc";
   version = "0.1.0";
@@ -7,23 +7,16 @@ stdenv.mkDerivation {
   name = "${name}";
 
   src = ./.;
-  buildInputs = [ pkgs.ruby_2_7 ];
-
-  # Work around the "unpacker appears to have produced no directories"
-  # case that happens when the archive doesn't have a subdirectory.
-  setSourceRoot = "sourceRoot=`pwd`";
+  buildInputs = [ pkgs.ruby_3_1 ];
 
   installPhase = ''
     mkdir -p $out/bin
-    cp ${name} $out/bin/
+    cp ${name}.rb $out/bin/${name}
+    chmod +x $out/bin/${name}
   '';
 
   meta = {
-    description = "Boundary enables identity-based access management for dynamic infrastructure.";
-    longDescription = ''
-      Boundary enables identity-based access management for dynamic infrastructure.
-    '';
-    homepage = "https://boundaryproject.io";
+    description = "Simple CLI calculator";
     license = "MPL-2.0";
     platforms = with lib.platforms; linux;
     maintainers = [

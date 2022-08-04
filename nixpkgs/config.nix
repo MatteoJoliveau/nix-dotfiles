@@ -17,6 +17,7 @@
     rofimoji = callPackage pkgs/rofimoji.nix {
       pypkgs = python39Packages;
     };
+    calc = callPackage pkgs/calc { };
   };
 
   # Look, I don't like this either, but they are slow to fix those CVEs

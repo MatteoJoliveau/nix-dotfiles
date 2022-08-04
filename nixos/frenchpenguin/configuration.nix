@@ -87,6 +87,7 @@
   hardware.nvidia.powerManagement.finegrained = true;
 
   services.autorandr.enable = true;
+  services.avahi.enable = true;
 
   # Enable touchpad support.
   services.xserver.libinput = {

@@ -21,6 +21,7 @@
     wireguard-tools
     vips
     pciutils
+    calc
   ];
 
   programs.direnv.enable = true;
