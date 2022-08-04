@@ -87,7 +87,15 @@
   hardware.nvidia.powerManagement.finegrained = true;
 
   services.autorandr.enable = true;
-  services.avahi.enable = true;
+
+  # Avahi/mDNS
+  services.avahi = {
+    enable = true;
+    publish = {
+      enable = true;
+      userServices = true;
+    };
+  };
 
   # Enable touchpad support.
   services.xserver.libinput = {
