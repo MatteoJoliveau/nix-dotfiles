@@ -12,8 +12,7 @@
     fd
     jetbrains-mono
     vim
-    zip
-    unzip
+    p7zip
     nmap
     file
     patchelf
