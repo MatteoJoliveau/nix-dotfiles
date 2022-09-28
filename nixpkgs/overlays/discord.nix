@@ -1,10 +1,10 @@
 self: super:
 {
   discord = super.discord.overrideAttrs (old: rec {
-    version = "0.0.17";
+    version = "0.0.20";
     src = super.fetchurl {
       url = "https://dl.discordapp.net/apps/linux/${version}/discord-${version}.tar.gz";
-      sha256 = "058k0cmbm4y572jqw83bayb2zzl2fw2aaz0zj1gvg6sxblp76qil";
+      sha256 = "sha256-3f7yuxigEF3e8qhCetCHKBtV4XUHsx/iYiaCCXjspYw=";
     };
   });
 }

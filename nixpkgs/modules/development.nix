@@ -43,6 +43,7 @@ in
     remmina
     velero
     google-cloud-sdk
+    httpie-desktop
   ];
 
   programs.vscode.enable = true;

@@ -18,6 +18,7 @@
       pypkgs = python39Packages;
     };
     calc = callPackage pkgs/calc { };
+    httpie-desktop = pkgs.callPackage pkgs/httpie-desktop.nix {};
   };
 
   # Look, I don't like this either, but they are slow to fix those CVEs

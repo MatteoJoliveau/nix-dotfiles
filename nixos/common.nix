@@ -123,6 +123,8 @@ in
     ";
   };
   
+  # Firmware updates
+  services.fwupd.enable = true;
 
   # For steam
   hardware.opengl.driSupport32Bit = true;

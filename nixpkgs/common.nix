@@ -20,7 +20,7 @@ in
 
   nixpkgs.overlays = [
     # Re-enable if upstream is slacking off
-    # (import ./overlays/discord.nix) 
+    (import ./overlays/discord.nix) 
   ];
 
   home.username = username;
