@@ -37,6 +37,7 @@
     caffeine-ng
     krita
     nextcloud-client
+    opensnitch-ui
   ];
 
   home.file.".face".source = ../images/propic.jpg;
@@ -107,4 +108,6 @@
       ${pkgs.xdg-utils}/bin/xdg-mime default firefox.desktop text/pdf
     '';
   };
+
+  services.opensnitch-ui.enable = true;
 }

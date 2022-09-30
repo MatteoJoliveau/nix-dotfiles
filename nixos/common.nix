@@ -31,6 +31,8 @@ in
       127.0.0.1 hello.localhost
       ::1 hello.localhost
     '';
+  
+  services.opensnitch.enable = true;
 
   # Configure GRUB 
   boot.loader = {
