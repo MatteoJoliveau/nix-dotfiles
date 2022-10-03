@@ -1,5 +1,10 @@
 { pkgs, lib, ... }:
 
+let
+  discord = pkgs.discord.override {
+    nss = pkgs.nss_latest;
+  };
+in
 {
   home.packages = with pkgs; [
     feh
