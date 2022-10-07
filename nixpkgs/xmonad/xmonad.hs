@@ -103,6 +103,7 @@ myManageHook = composeAll
     , className =? "Galculator"              --> doFloat
     , className =? "Steam"                   --> doFloat
     , className =? "Gimp"                    --> doFloat
+    , className =? "zoom"                    --> doFloat
     , appName   =? "gpicview"                --> doFloat
     , className =? "MPlayer"                 --> doFloat
     , className =? "stalonetray"             --> doIgnore
