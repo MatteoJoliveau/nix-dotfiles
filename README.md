@@ -2,6 +2,9 @@
 
 Nix recipes for my personal workstations.
 
+> **Warning**  
+> This repository has been deprecated in favour of [nix-config](https://github.com/MatteoJoliveau/nix-config).
+
 ## Install 
 
 ### System Config
